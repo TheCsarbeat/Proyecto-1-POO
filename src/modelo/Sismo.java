@@ -14,21 +14,37 @@ import java.time.LocalTime;
 public class Sismo {
     private int id;
     private Calendar fecha;
-    private LocalTime hora;
-    private double profundidad;
+    private Calendar hora;
+    private double profundidad, latitud, longitud, magnitud;
+    private boolean terrestre;
     private TOrigen origen;
+    private NProvincia provincia;
+   
 
     //constructor
 
     public Sismo() {
     }
     
-    public Sismo(int num, Calendar fecha, LocalTime hora, double profundidad, TOrigen origen) {
+    public Sismo(int num, Calendar fecha, Calendar hora, double profundidad, TOrigen origen) {
         this.id = num;
         this.fecha = fecha;
         this.hora = hora;
         this.profundidad = profundidad;
         this.origen = origen;
+    }
+
+    public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, boolean terrestre, TOrigen origen, NProvincia provincia) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.profundidad = profundidad;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.magnitud = magnitud;
+        this.terrestre = terrestre;
+        this.origen = origen;
+        this.provincia = provincia;
     }
 
     //getters
@@ -40,7 +56,7 @@ public class Sismo {
         return fecha;
     }
 
-    public LocalTime getHora() {
+    public Calendar getHora() {
         return hora;
     }
 
@@ -51,6 +67,27 @@ public class Sismo {
     public TOrigen getOrigen() {
         return origen;
     }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public double getMagnitud() {
+        return magnitud;
+    }
+
+    public boolean isTerrestre() {
+        return terrestre;
+    }
+
+    public NProvincia getProvincia() {
+        return provincia;
+    }
+    
     
     //setters
     public void setId(int id) {
@@ -61,7 +98,7 @@ public class Sismo {
         this.fecha = fecha;
     }
 
-    public void setHora(LocalTime hora) {
+    public void setHora(Calendar hora) {
         this.hora = hora;
     }
 
@@ -71,6 +108,26 @@ public class Sismo {
 
     public void setOrigen(TOrigen origen) {
         this.origen = origen;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public void setMagnitud(double magnitud) {
+        this.magnitud = magnitud;
+    }
+
+    public void setTerrestre(boolean terrestre) {
+        this.terrestre = terrestre;
+    }
+
+    public void setProvincia(NProvincia provincia) {
+        this.provincia = provincia;
     }
     
     

@@ -5,7 +5,12 @@
  */
 package vista;
 
-/**
+import control.Controlador;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+ /**
  *
  * @author ytces
  */
@@ -14,9 +19,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    public static Controlador controlador = new Controlador();
+   
     public VentanaPrincipal() {
-        initComponents();
+        initComponents();      
     }
+    
+    public void cargarPanel(JPanel panel){
+        contentPanel.removeAll();
+        contentPanel.add(panel);
+        contentPanel.repaint();
+        contentPanel.revalidate();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,40 +42,189 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        imgStacy = new javax.swing.JLabel();
+        zonaSismo = new javax.swing.ButtonGroup();
+        backgroundPanel = new javax.swing.JPanel();
+        menuPanel = new javax.swing.JPanel();
+        sismoPanel = new javax.swing.JPanel();
+        lbMenuMapa = new javax.swing.JLabel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        sismoPanel1 = new javax.swing.JPanel();
+        lbMenuSismos = new javax.swing.JLabel();
+        topPanel = new javax.swing.JPanel();
+        contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(500, 580));
-        jPanel1.setMinimumSize(new java.awt.Dimension(500, 580));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 127, -1, -1));
+        backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundPanel.setForeground(new java.awt.Color(255, 255, 255));
+        backgroundPanel.setMaximumSize(new java.awt.Dimension(500, 580));
+        backgroundPanel.setMinimumSize(new java.awt.Dimension(500, 580));
+        backgroundPanel.setPreferredSize(new java.awt.Dimension(600, 500));
+        backgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imgStacy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgStacy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stacy.jpg"))); // NOI18N
-        imgStacy.setText("label");
-        imgStacy.setOpaque(true);
-        imgStacy.setPreferredSize(new java.awt.Dimension(500, 450));
-        jPanel1.add(imgStacy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 700));
+        menuPanel.setBackground(new java.awt.Color(49, 49, 74));
+        menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sismoPanel.setBackground(new java.awt.Color(0, 150, 136));
+        sismoPanel.setPreferredSize(new java.awt.Dimension(250, 50));
+
+        lbMenuMapa.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuMapa.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuMapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuMapa.setText("Mapa");
+        lbMenuMapa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuMapaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuMapaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuMapaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sismoPanelLayout = new javax.swing.GroupLayout(sismoPanel);
+        sismoPanel.setLayout(sismoPanelLayout);
+        sismoPanelLayout.setHorizontalGroup(
+            sismoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismoPanelLayout.createSequentialGroup()
+                .addGap(0, 22, Short.MAX_VALUE)
+                .addComponent(lbMenuMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        sismoPanelLayout.setVerticalGroup(
+            sismoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismoPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbMenuMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuPanel.add(sismoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        jSpinner2.setModel(new javax.swing.SpinnerDateModel());
+        jSpinner2.setEditor(new javax.swing.JSpinner.DateEditor(jSpinner2, "d MMM y"));
+        menuPanel.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 500, 190, -1));
+
+        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField1.setBorder(null);
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        jFormattedTextField1.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        menuPanel.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 200, 30));
+
+        jFormattedTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField2.setBorder(null);
+        try {
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField2.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        menuPanel.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 200, 30));
+
+        sismoPanel1.setBackground(new java.awt.Color(0, 150, 136));
+        sismoPanel1.setPreferredSize(new java.awt.Dimension(250, 50));
+
+        lbMenuSismos.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos.setText("SISMOS");
+        lbMenuSismos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismosMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sismoPanel1Layout = new javax.swing.GroupLayout(sismoPanel1);
+        sismoPanel1.setLayout(sismoPanel1Layout);
+        sismoPanel1Layout.setHorizontalGroup(
+            sismoPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbMenuSismos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
+        sismoPanel1Layout.setVerticalGroup(
+            sismoPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismoPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbMenuSismos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuPanel.add(sismoPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 154, -1, -1));
+
+        backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 900));
+
+        topPanel.setBackground(new java.awt.Color(0, 150, 136));
+
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1310, Short.MAX_VALUE)
+        );
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        backgroundPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 50));
+
+        contentPanel.setLayout(new java.awt.CardLayout());
+        backgroundPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 1300, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1602, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(backgroundPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void lbMenuMapaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuMapaMouseEntered
+
+    private void lbMenuMapaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuMapaMouseExited
+
+    private void lbMenuSismosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseClicked
+        // TODO add your handling code here:
+        PanelSismos panel = new PanelSismos();
+        cargarPanel(panel);
+    }//GEN-LAST:event_lbMenuSismosMouseClicked
+
+    private void lbMenuSismosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismosMouseEntered
+
+    private void lbMenuSismosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismosMouseExited
+
+    private void lbMenuMapaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseClicked
+        // TODO add your handling code here:
+        PanelMapa panel = new PanelMapa();
+        cargarPanel(panel);
+    }//GEN-LAST:event_lbMenuMapaMouseClicked
+
+
 
     /**
      * @param args the command line arguments
@@ -98,8 +262,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel imgStacy;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel backgroundPanel;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JLabel lbMenuMapa;
+    private javax.swing.JLabel lbMenuSismos;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JPanel sismoPanel;
+    private javax.swing.JPanel sismoPanel1;
+    private javax.swing.JPanel topPanel;
+    private javax.swing.ButtonGroup zonaSismo;
     // End of variables declaration//GEN-END:variables
+
+
 }

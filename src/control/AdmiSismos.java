@@ -13,6 +13,7 @@ import modelo.Sismo;
  */
 public class AdmiSismos {
     private ArrayList<Sismo> allSismos = new ArrayList();
+    private int contadorSismos = 0;
     
     public AdmiSismos(){
         allSismos = new ArrayList<>();
@@ -30,6 +31,7 @@ public class AdmiSismos {
                 return false;
         }
         allSismos.add(s);
+        contadorSismos++;
         return true;
     }
     
@@ -77,6 +79,10 @@ public class AdmiSismos {
         return false;
     }
 
+    public int getContadorSismos() {
+        return contadorSismos;
+    }
+    
     @Override
     public String toString() {
         return "AdmiSismos{" + "allSismos=" + allSismos + '}';
