@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.SpinnerNumberModel;
-import control.Controlador;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -25,6 +24,7 @@ public class PanelSismos extends javax.swing.JPanel {
     
     public PanelSismos() {
         initComponents();
+        cargarTabla();
     }
 
     /**
@@ -434,7 +434,6 @@ public class PanelSismos extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-
         Calendar fechaSismo = Calendar.getInstance();
         Calendar hora = Calendar.getInstance();
         Date horaSismo = new Date();
@@ -442,14 +441,10 @@ public class PanelSismos extends javax.swing.JPanel {
         boolean terrestre = false;
         int provincia =0 , origenFalla;
 
-        /*Date date = (Date) timeHoraSismo.getValue();
-
-        System.out.println("Converted String: " + strDate); */
-
+        //Obtener los datos de los campos
         fechaSismo = dateFechaSismo.getCalendar();
         horaSismo = (Date) timeHoraSismo.getValue();
         hora.setTime(horaSismo);
-
         profundidad = (double) numberProfundidad.getValue();
         if(rbMaritimo.isSelected()){
             terrestre = false;
@@ -458,6 +453,7 @@ public class PanelSismos extends javax.swing.JPanel {
             terrestre = true;
             provincia = cboProvincias.getSelectedIndex();
         }
+        
         origenFalla= cbFallas.getSelectedIndex();
         try{
             latitud = Double.parseDouble(txtLatitud.getText());
@@ -466,38 +462,31 @@ public class PanelSismos extends javax.swing.JPanel {
         }catch(Exception e) {
             //  Block of code to handle errors
         }
-
-        if (fechaSismo!=null && horaSismo!=null && profundidad !=0){    //La validaci[on de la profundidad.
-
-            System.out.println(fechaSismo.get(Calendar.YEAR));
-            System.out.println(dateFormat.format(horaSismo));
-            System.out.println("Profundidad: "+profundidad);
-            System.out.println("Terrestre"+ terrestre);
-            System.out.println("Solo la hora de la mierda: "+hora.get(Calendar.HOUR));
-
+        
+        //Validaci[on de los datos
+        if (fechaSismo!=null && horaSismo!=null && profundidad !=0){    
             boolean respuesta =  VentanaPrincipal.controlador.agregarSismo(fechaSismo, hora, profundidad, latitud, longitud, magnitud, terrestre, 
                     VentanaPrincipal.controlador.obtenerOrigen(origenFalla), VentanaPrincipal.controlador.obtenerProvincia(provincia));
-
             if(respuesta){
-                System.out.println("SI se pudo");
-                tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos());
-
-                tableSismos.setDefaultEditor(Object.class, null);
-
+                cargarTabla();
             }
         }
     }//GEN-LAST:event_btnAgregar1MouseClicked
 
     private void btnAgregar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregar1MouseEntered
         // TODO add your handling code here:
-        agregarPanel.setBackground(new Color(50, 200, 186));
+        agregarPanel.setBackground(VentanaPrincipal.overedColor);
     }//GEN-LAST:event_btnAgregar1MouseEntered
 
     private void btnAgregar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregar1MouseExited
         // TODO add your handling code here:
-        agregarPanel.setBackground(new Color(0, 150, 136));
+        agregarPanel.setBackground(VentanaPrincipal.normalColor);
     }//GEN-LAST:event_btnAgregar1MouseExited
-
+    
+    public void cargarTabla(){
+        tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos());
+        tableSismos.setDefaultEditor(Object.class, null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel agregarPanel;

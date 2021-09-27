@@ -17,7 +17,7 @@ public class PanelMapa extends javax.swing.JPanel {
     
     public PanelMapa() {
         initComponents();
-        System.out.println(VentanaPrincipal.controlador.consultarSismo(0).getProfundidad());
+        //System.out.println(VentanaPrincipal.controlador.consultarSismo(0).getProfundidad());
     }
 
     /**
