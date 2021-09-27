@@ -36,6 +36,7 @@ public class PanelSismos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        radioZonaSismo = new javax.swing.ButtonGroup();
         dateFechaSismo = new com.toedter.calendar.JDateChooser();
         lbFechaSismo = new javax.swing.JLabel();
         lbSismos2 = new javax.swing.JLabel();
@@ -165,9 +166,11 @@ public class PanelSismos extends javax.swing.JPanel {
         panelRadioZonaSismo.setBackground(new java.awt.Color(255, 255, 255));
         panelRadioZonaSismo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        radioZonaSismo.add(rbTerrestre);
         rbTerrestre.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         rbTerrestre.setText("Terrestre");
 
+        radioZonaSismo.add(rbMaritimo);
         rbMaritimo.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         rbMaritimo.setText("Marítima");
         rbMaritimo.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -510,6 +513,7 @@ public class PanelSismos extends javax.swing.JPanel {
     private javax.swing.JLabel lbSismos9;
     private javax.swing.JSpinner numberProfundidad;
     private javax.swing.JPanel panelRadioZonaSismo;
+    private javax.swing.ButtonGroup radioZonaSismo;
     private javax.swing.JRadioButton rbMaritimo;
     private javax.swing.JRadioButton rbTerrestre;
     private javax.swing.JTable tableSismos;
