@@ -275,7 +275,7 @@
         <Container class="javax.swing.JPanel" name="contentPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="300" y="50" width="1300" height="850"/>
+              <AbsoluteConstraints x="300" y="40" width="1300" height="850"/>
             </Constraint>
           </Constraints>
 

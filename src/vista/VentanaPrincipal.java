@@ -178,7 +178,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         backgroundPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 50));
 
         contentPanel.setLayout(new java.awt.CardLayout());
-        backgroundPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 1300, 850));
+        backgroundPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 1300, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
