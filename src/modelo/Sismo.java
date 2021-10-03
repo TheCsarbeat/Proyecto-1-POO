@@ -16,6 +16,7 @@ public class Sismo {
     private Calendar fecha;
     private Calendar hora;
     private double profundidad, latitud, longitud, magnitud;
+    private String localizacion;
     private boolean terrestre;
     private TOrigen origen;
     private NProvincia provincia;
@@ -34,7 +35,7 @@ public class Sismo {
         this.origen = origen;
     }
 
-    public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, boolean terrestre, TOrigen origen, NProvincia provincia) {
+    public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, String localizacion, boolean terrestre, TOrigen origen, NProvincia provincia) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -42,6 +43,7 @@ public class Sismo {
         this.latitud = latitud;
         this.longitud = longitud;
         this.magnitud = magnitud;
+        this.localizacion = localizacion;
         this.terrestre = terrestre;
         this.origen = origen;
         this.provincia = provincia;
@@ -76,6 +78,10 @@ public class Sismo {
         return longitud;
     }
 
+    public String getLocalizacion() {
+        return localizacion;
+    }
+    
     public double getMagnitud() {
         return magnitud;
     }
@@ -120,6 +126,10 @@ public class Sismo {
 
     public void setMagnitud(double magnitud) {
         this.magnitud = magnitud;
+    }
+
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
     }
 
     public void setTerrestre(boolean terrestre) {

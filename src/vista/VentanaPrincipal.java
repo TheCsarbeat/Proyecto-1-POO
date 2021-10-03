@@ -7,6 +7,11 @@ package vista;
 
 import control.Controlador;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -205,7 +210,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void lbMenuMapaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseClicked
         // TODO add your handling code here:
-        PanelMapa panel = new PanelMapa();
+        PanelMapa panel = new PanelMapa(40.0, 110,0);
         cargarPanel(panel);
     }//GEN-LAST:event_lbMenuMapaMouseClicked
 
