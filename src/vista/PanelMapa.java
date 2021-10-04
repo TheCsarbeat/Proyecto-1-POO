@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package vista;
-import maps.MapsControl;
 
+import control.MapsControl;
+import java.io.IOException;
 /**
  *
  * @author erksm
@@ -17,16 +18,18 @@ public class PanelMapa extends javax.swing.JPanel {
      */
     public static MapsControl controlMapa = new MapsControl();
     
-    
-    public PanelMapa() {
+    public PanelMapa(double latitud, double longitud) throws IOException {
         initComponents();
-        double latitud, longitud;
         latitud = 40.0;
         longitud = 110.0;
         controlMapa.crearDoc();
         controlMapa.generarHTML(latitud, longitud);
         controlMapa.overwriteHTML();
         controlMapa.abrirBrowser();
+    }
+
+    PanelMapa(double d, int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -38,11 +41,24 @@ public class PanelMapa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setPreferredSize(new java.awt.Dimension(1290, 770));
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 196, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 135, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
