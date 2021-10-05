@@ -5,6 +5,7 @@
  */
 package vista;
 
+import control.MapsControl;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,10 +13,13 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JOptionPane;
 import modelo.Sismo;
 import control.Utilities;
+import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.table.TableModel;
 import modelo.TOrigen;
 
@@ -28,10 +32,11 @@ public class PanelSismos extends javax.swing.JPanel {
     /**
      * Creates new form panelSismos
      */
-    
+    private JFrame frame = new JFrame();
+
     public PanelSismos() {
         initComponents();
-        
+
         VentanaPrincipal.controlador.getExelFile();
         cargarTabla();
     }
@@ -92,7 +97,6 @@ public class PanelSismos extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dateFechaSismo.setBackground(new java.awt.Color(255, 255, 255));
-        dateFechaSismo.setBorder(null);
         dateFechaSismo.setName("dateChooserFechaSismo"); // NOI18N
         add(dateFechaSismo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 190, -1));
 
@@ -212,7 +216,7 @@ public class PanelSismos extends javax.swing.JPanel {
                 .addComponent(rbMaritimo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbTerrestre)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(panelRadioZonaSismo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 160, 60));
@@ -315,7 +319,6 @@ public class PanelSismos extends javax.swing.JPanel {
             }
         });
         tableSismos.setSelectionBackground(new java.awt.Color(50, 200, 186));
-        tableSismos.setShowGrid(true);
         tableSismos.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tableSismosFocusLost(evt);
@@ -534,7 +537,7 @@ public class PanelSismos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLatitudFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLatitudFocusGained
-        if(txtLatitud.getText().equals("Ingrese la latitud")){
+        if (txtLatitud.getText().equals("Ingrese la latitud")) {
             txtLatitud.setText("");
         }
         txtLatitud.setForeground(Color.black);
@@ -542,15 +545,15 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void txtLatitudFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLatitudFocusLost
         // TODO add your handling code here:
-        if (txtLatitud.getText().isEmpty() == true){
+        if (txtLatitud.getText().isEmpty() == true) {
             txtLatitud.setText("Ingrese la latitud");
-            txtLatitud.setForeground(new Color(204,204,204));
+            txtLatitud.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_txtLatitudFocusLost
 
     private void txtLatitudMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLatitudMousePressed
         // TODO add your handling code here:
-        if(txtLatitud.getText().equals("Ingrese la latitud")){
+        if (txtLatitud.getText().equals("Ingrese la latitud")) {
             txtLatitud.setText("");
         }
         txtLatitud.setForeground(Color.black);
@@ -558,7 +561,7 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void txtLongitudFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLongitudFocusGained
         // TODO add your handling code here:
-        if(txtLongitud.getText().equals("Ingrese la longitud")){
+        if (txtLongitud.getText().equals("Ingrese la longitud")) {
             txtLongitud.setText("");
         }
         txtLongitud.setForeground(Color.black);
@@ -566,15 +569,15 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void txtLongitudFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLongitudFocusLost
         // TODO add your handling code here:
-        if (txtLongitud.getText().isEmpty() == true){
+        if (txtLongitud.getText().isEmpty() == true) {
             txtLongitud.setText("Ingrese la longitud");
-            txtLongitud.setForeground(new Color(204,204,204));
+            txtLongitud.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_txtLongitudFocusLost
 
     private void txtLongitudMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLongitudMousePressed
         // TODO add your handling code here:
-        if(txtLongitud.getText().equals("Ingrese la longitud")){
+        if (txtLongitud.getText().equals("Ingrese la longitud")) {
             txtLongitud.setText("");
         }
         txtLongitud.setForeground(Color.black);
@@ -582,16 +585,16 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void rbMaritimoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbMaritimoStateChanged
         // TODO add your handling code here:
-        if (rbMaritimo.isSelected()){
+        if (rbMaritimo.isSelected()) {
             cboProvincias.setEnabled(false);
-        }else{
+        } else {
             cboProvincias.setEnabled(true);
         }
     }//GEN-LAST:event_rbMaritimoStateChanged
 
     private void txtMagnitudFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMagnitudFocusGained
         // TODO add your handling code here:
-        if(txtMagnitud.getText().equals("Ingrese la magnitud")){
+        if (txtMagnitud.getText().equals("Ingrese la magnitud")) {
             txtMagnitud.setText("");
         }
         txtMagnitud.setForeground(Color.black);
@@ -599,15 +602,15 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void txtMagnitudFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMagnitudFocusLost
         // TODO add your handling code here:
-        if (txtMagnitud.getText().isEmpty() == true){
+        if (txtMagnitud.getText().isEmpty() == true) {
             txtMagnitud.setText("Ingrese la magnitud");
-            txtMagnitud.setForeground(new Color(204,204,204));
+            txtMagnitud.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_txtMagnitudFocusLost
 
     private void txtMagnitudMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMagnitudMousePressed
         // TODO add your handling code here:
-        if(txtMagnitud.getText().equals("Ingrese la magnitud")){
+        if (txtMagnitud.getText().equals("Ingrese la magnitud")) {
             txtMagnitud.setText("");
         }
         txtMagnitud.setForeground(Color.black);
@@ -617,98 +620,96 @@ public class PanelSismos extends javax.swing.JPanel {
         try {
             //  Block of code to try
             double val = Double.parseDouble(txtMagnitud.getText());
-            if(2.0 <= val && val <= 6.9){
+            if (2.0 <= val && val <= 6.9) {
                 lbSignoMagnitud.setText("Ml");
-            }else if(val>6.9){
+            } else if (val > 6.9) {
                 lbSignoMagnitud.setText("Mw");
-            }else{
+            } else {
                 lbSignoMagnitud.setText("M");
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             //  Block of code to handle errors
         }
     }//GEN-LAST:event_txtMagnitudKeyReleased
 
     private void btnAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseClicked
         // TODO add your handling code here:
-        if(btnAgregarPanel.getBackground() != Color.gray || lbID.getText().equals("")){
-                    
+        if (btnAgregarPanel.getBackground() != Color.gray || lbID.getText().equals("")) {
+
             Calendar fechaSismo = null;
             Calendar hora = Calendar.getInstance();
-            double profundidad =0, latitud=0, longitud=0, magnitud=0;
+            double profundidad = 0, latitud = 0, longitud = 0, magnitud = 0;
             boolean terrestre = false;
-            int provincia =0 , origenFalla;
-            String localizacion; 
+            int provincia = 0, origenFalla;
+            String localizacion;
 
-             //Falgs para las validaciones
-             boolean flagMagnitud = true, flagLongitud = true, flagLatitud = true,
-                     flagProfundidad = true, flagRadioSelect =false;
+            //Falgs para las validaciones
+            boolean flagMagnitud = true, flagLongitud = true, flagLatitud = true,
+                    flagProfundidad = true, flagRadioSelect = false;
             //Obtener los datos de los campos
             fechaSismo = dateFechaSismo.getCalendar();
             hora.setTime((Date) timeHoraSismo.getValue());
             localizacion = txtLocalizacion.getText();
-            if(rbMaritimo.isSelected()){
+            if (rbMaritimo.isSelected()) {
                 terrestre = false;
                 provincia = -1;
                 flagRadioSelect = true;
-            }else if (rbTerrestre.isSelected()){
+            } else if (rbTerrestre.isSelected()) {
                 terrestre = true;
                 provincia = cboProvincias.getSelectedIndex();
                 flagRadioSelect = true;
-            }    
+            }
 
+            origenFalla = cbFallas.getSelectedIndex();
 
-            origenFalla= cbFallas.getSelectedIndex();
-
-            try{
+            try {
                 latitud = Double.parseDouble(txtLatitud.getText());
-            }catch(Exception e) {
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagLatitud = false;
             }
-            try{
-                 longitud = Double.parseDouble(txtLongitud.getText());
-            }catch(Exception e) {
+            try {
+                longitud = Double.parseDouble(txtLongitud.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagLongitud = false;
             }
 
-            try{
-                profundidad  = Double.parseDouble(txtProfundidad.getText());
-            }catch(Exception e) {
+            try {
+                profundidad = Double.parseDouble(txtProfundidad.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagProfundidad = false;
             }
-            try{
-                magnitud  = Double.parseDouble(txtMagnitud.getText());
-            }catch(Exception e) {
+            try {
+                magnitud = Double.parseDouble(txtMagnitud.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagMagnitud = false;
             }
 
-
             //Validaci[on de los datos
-            if (fechaSismo==null){    
+            if (fechaSismo == null) {
                 JOptionPane.showMessageDialog(null, "Fecha Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (hora == null){
+            } else if (hora == null) {
                 JOptionPane.showMessageDialog(null, "Hora Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (localizacion.equals("")){
+            } else if (localizacion.equals("")) {
                 JOptionPane.showMessageDialog(null, "Localización Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagRadioSelect){
+            } else if (!flagRadioSelect) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar una zona!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagProfundidad){
+            } else if (!flagProfundidad) {
                 JOptionPane.showMessageDialog(null, "Profundidad Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagMagnitud){
+            } else if (!flagMagnitud) {
                 JOptionPane.showMessageDialog(null, "Magnitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagLatitud){
+            } else if (!flagLatitud) {
                 JOptionPane.showMessageDialog(null, "Latitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagLongitud){
+            } else if (!flagLongitud) {
                 JOptionPane.showMessageDialog(null, "Longitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                boolean respuesta =  VentanaPrincipal.controlador.agregarSismo(fechaSismo, hora,
-                        profundidad, latitud, longitud, magnitud,localizacion, terrestre,
+            } else {
+                boolean respuesta = VentanaPrincipal.controlador.agregarSismo(fechaSismo, hora,
+                        profundidad, latitud, longitud, magnitud, localizacion, terrestre,
                         Utilities.obtenerOrigen(origenFalla), Utilities.obtenerProvincia(provincia));
-                if(respuesta){
+                if (respuesta) {
                     cargarTabla();
                     JOptionPane.showMessageDialog(null, "El sismo se ha registrado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
                     VentanaPrincipal.controlador.guarDatos(tableSismos);
@@ -720,15 +721,15 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
         // TODO add your handling code here:
-        if(btnAgregarPanel.getBackground() != Color.gray ){
+        if (btnAgregarPanel.getBackground() != Color.gray) {
             btnAgregarPanel.setBackground(VentanaPrincipal.overedColor);
         }
-        
+
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
         // TODO add your handling code here:
-        if(btnAgregarPanel.getBackground() != Color.gray){
+        if (btnAgregarPanel.getBackground() != Color.gray) {
             btnAgregarPanel.setBackground(VentanaPrincipal.normalColor);
         }
     }//GEN-LAST:event_btnAgregarMouseExited
@@ -738,7 +739,7 @@ public class PanelSismos extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMagnitudActionPerformed
 
     private void txtProfundidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfundidadFocusGained
-        if(txtProfundidad.getText().equals("Ingrese la profundidad")){
+        if (txtProfundidad.getText().equals("Ingrese la profundidad")) {
             txtProfundidad.setText("");
         }
         txtProfundidad.setForeground(Color.black);
@@ -746,9 +747,9 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void txtProfundidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProfundidadFocusLost
         // TODO add your handling code here:
-        if (txtProfundidad.getText().isEmpty() == true){
+        if (txtProfundidad.getText().isEmpty() == true) {
             txtProfundidad.setText("Ingrese la profundidad");
-            txtProfundidad.setForeground(new Color(204,204,204));
+            txtProfundidad.setForeground(new Color(204, 204, 204));
         }
     }//GEN-LAST:event_txtProfundidadFocusLost
 
@@ -758,38 +759,42 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void tableSismosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSismosMouseClicked
         // TODO add your handling code here:
-        
+
         int row = tableSismos.getSelectedRow();
     }//GEN-LAST:event_tableSismosMouseClicked
 
     private void tableSismosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSismosMousePressed
         // TODO add your handling code here:
-        
-        if(evt.getClickCount() ==2){
-            Sismo s = VentanaPrincipal.controlador.consultarSismo(tableSismos.getSelectedRow());
+        TableModel tableModel = tableSismos.getModel();
+        Sismo s = VentanaPrincipal.controlador.consultarSismo((int)tableModel.getValueAt(tableSismos.getSelectedRow(), 0));
+        if (evt.getClickCount() == 2) {
             try {
-                PanelMapa panel = new PanelMapa(s.getLatitud(), s.getLongitud());
-                mapPanel.removeAll();
-                mapPanel.add(panel);
-                mapPanel.repaint();
-                mapPanel.revalidate();
-      
+                abrirMapa(s.getLatitud(), s.getLongitud());
             } catch (IOException ex) {
-                System.out.println("Entr[a al catch");
                 Logger.getLogger(PanelSismos.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        }else if(evt.getClickCount() ==1){
-            TableModel tableModel = tableSismos.getModel();
-            Sismo s = VentanaPrincipal.controlador.consultarSismo((int) tableModel.getValueAt(tableSismos.getSelectedRow(),0));
+
+        } else if (evt.getClickCount() == 1) {
             cargarCampos(s);
         }
     }//GEN-LAST:event_tableSismosMousePressed
 
+    private void abrirMapa(double latitud, double longitud) throws IOException {
+        VentanaPrincipal.controlador.leerHTML();
+        VentanaPrincipal.controlador.modificarHTML(latitud, longitud);
+        VentanaPrincipal.controlador.escribirHTML();
+
+        frame.add(MapsControl.view, BorderLayout.CENTER);
+        frame.setSize(1280, 720);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        VentanaPrincipal.controlador.openMaps();
+    }
+
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
         // TODO add your handling code here:
         limpiarCampos();
-        
+
     }//GEN-LAST:event_btnLimpiarMouseClicked
 
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
@@ -804,89 +809,87 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void tableSismosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tableSismosFocusLost
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_tableSismosFocusLost
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         // TODO add your handling code here:
-        if(btnAgregarPanel.getBackground() == Color.gray){
-                    
+        if (btnAgregarPanel.getBackground() == Color.gray) {
+
             Calendar fechaSismo = null;
             Calendar hora = Calendar.getInstance();
-            double profundidad =0, latitud=0, longitud=0, magnitud=0;
+            double profundidad = 0, latitud = 0, longitud = 0, magnitud = 0;
             boolean terrestre = false;
-            int provincia =0 , origenFalla;
-            String localizacion; 
+            int provincia = 0, origenFalla;
+            String localizacion;
 
-             //Falgs para las validaciones
-             boolean flagMagnitud = true, flagLongitud = true, flagLatitud = true,
-                     flagProfundidad = true, flagRadioSelect =false;
+            //Falgs para las validaciones
+            boolean flagMagnitud = true, flagLongitud = true, flagLatitud = true,
+                    flagProfundidad = true, flagRadioSelect = false;
             //Obtener los datos de los campos
             fechaSismo = dateFechaSismo.getCalendar();
             hora.setTime((Date) timeHoraSismo.getValue());
             localizacion = txtLocalizacion.getText();
-            if(rbMaritimo.isSelected()){
+            if (rbMaritimo.isSelected()) {
                 terrestre = false;
                 provincia = -1;
                 flagRadioSelect = true;
-            }else if (rbTerrestre.isSelected()){
+            } else if (rbTerrestre.isSelected()) {
                 terrestre = true;
                 provincia = cboProvincias.getSelectedIndex();
                 flagRadioSelect = true;
-            }    
+            }
 
+            origenFalla = cbFallas.getSelectedIndex();
 
-            origenFalla= cbFallas.getSelectedIndex();
-
-            try{
+            try {
                 latitud = Double.parseDouble(txtLatitud.getText());
-            }catch(Exception e) {
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagLatitud = false;
             }
-            try{
-                 longitud = Double.parseDouble(txtLongitud.getText());
-            }catch(Exception e) {
+            try {
+                longitud = Double.parseDouble(txtLongitud.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagLongitud = false;
             }
 
-            try{
-                profundidad  = Double.parseDouble(txtProfundidad.getText());
-            }catch(Exception e) {
+            try {
+                profundidad = Double.parseDouble(txtProfundidad.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagProfundidad = false;
             }
-            try{
-                magnitud  = Double.parseDouble(txtMagnitud.getText());
-            }catch(Exception e) {
+            try {
+                magnitud = Double.parseDouble(txtMagnitud.getText());
+            } catch (Exception e) {
                 //  Block of code to handle errors
                 flagMagnitud = false;
             }
 
-
             //Validaci[on de los datos
-            if (fechaSismo==null){    
+            if (fechaSismo == null) {
                 JOptionPane.showMessageDialog(null, "Fecha Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (hora == null){
+            } else if (hora == null) {
                 JOptionPane.showMessageDialog(null, "Hora Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (localizacion.equals("")){
+            } else if (localizacion.equals("")) {
                 JOptionPane.showMessageDialog(null, "Localización Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagRadioSelect){
+            } else if (!flagRadioSelect) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar una zona!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagProfundidad){
+            } else if (!flagProfundidad) {
                 JOptionPane.showMessageDialog(null, "Profundidad Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagMagnitud){
+            } else if (!flagMagnitud) {
                 JOptionPane.showMessageDialog(null, "Magnitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagLatitud){
+            } else if (!flagLatitud) {
                 JOptionPane.showMessageDialog(null, "Latitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else if (!flagLongitud){
+            } else if (!flagLongitud) {
                 JOptionPane.showMessageDialog(null, "Longitud Inválida!", "Error", JOptionPane.ERROR_MESSAGE);
-            }else{
-                boolean respuesta =  VentanaPrincipal.controlador.modificarSismo(Integer.parseInt(lbID.getText()), fechaSismo, hora,
-                        profundidad, latitud, longitud, magnitud,localizacion, terrestre,
+            } else {
+                boolean respuesta = VentanaPrincipal.controlador.modificarSismo(Integer.parseInt(lbID.getText()), fechaSismo, hora,
+                        profundidad, latitud, longitud, magnitud, localizacion, terrestre,
                         Utilities.obtenerOrigen(origenFalla), Utilities.obtenerProvincia(provincia));
-                if(respuesta){
+                if (respuesta) {
                     cargarTabla();
                     JOptionPane.showMessageDialog(null, "El sismo se ha modificado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
                     limpiarCampos();
@@ -908,33 +911,34 @@ public class PanelSismos extends javax.swing.JPanel {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
-        if(lbID.getText() != ""){
-             VentanaPrincipal.controlador.eliminarSismo(Integer.parseInt(lbID.getText()));
-             JOptionPane.showMessageDialog(null, "El sismo se ha eliminado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
-             cargarTabla();
-             VentanaPrincipal.controlador.guarDatos(tableSismos);
+        if (lbID.getText() != "") {
+            VentanaPrincipal.controlador.eliminarSismo(Integer.parseInt(lbID.getText()));
+            JOptionPane.showMessageDialog(null, "El sismo se ha eliminado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
+            cargarTabla();
+            VentanaPrincipal.controlador.guarDatos(tableSismos);
         }
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
         // TODO add your handling code here:
         btnEliminarPanel.setBackground(VentanaPrincipal.overedColor);
-        
+
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
         // TODO add your handling code here:
         btnEliminarPanel.setBackground(VentanaPrincipal.normalColor);
     }//GEN-LAST:event_btnEliminarMouseExited
-    
-    public void cargarTabla(){
+
+    public void cargarTabla() {
         tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos());
         tableSismos.setDefaultEditor(Object.class, null);
     }
-    public void limpiarCampos(){
+
+    public void limpiarCampos() {
         lbID.setText("");
         dateFechaSismo.setDate(null);
-        Date date = new Date(); 
+        Date date = new Date();
         timeHoraSismo.setValue(date);
         txtLocalizacion.setText("");
         rbMaritimo.setSelected(false);
@@ -945,51 +949,52 @@ public class PanelSismos extends javax.swing.JPanel {
         txtMagnitud.setText("");
         txtLatitud.setText("");
         txtLongitud.setText("");
-        
+
         btnAgregarPanel.setBackground(VentanaPrincipal.normalColor);
         btnAgregar.setForeground(Color.white);
         btnAgregar.setEnabled(true);
-        
+
         tableSismos.setSelectionMode(0);
     }
-    public void cargarCampos(Sismo s){
+
+    public void cargarCampos(Sismo s) {
         lbID.setVisible(false);
         lbID.setText(String.valueOf(s.getId()));
-        
+
         dateFechaSismo.setDate(s.getFecha().getTime());
         timeHoraSismo.setValue(s.getHora().getTime());
         txtLocalizacion.setText(s.getLocalizacion());
-        if(s.isTerrestre()){
+        if (s.isTerrestre()) {
             rbTerrestre.setSelected(true);
-        }else{
+        } else {
             rbMaritimo.setSelected(true);
             cboProvincias.setEnabled(false);
-        }       
+        }
         cboProvincias.setSelectedIndex(Utilities.obtenerProvincia(s.getProvincia()));
         cbFallas.setSelectedIndex(Utilities.obtenerOrigen(s.getOrigen()));
         txtProfundidad.setText(String.valueOf(s.getProfundidad()));
         txtMagnitud.setText(String.valueOf(s.getMagnitud()));
         txtLatitud.setText(String.valueOf(s.getLatitud()));
         txtLongitud.setText(String.valueOf(s.getLongitud()));
-        
+
         txtProfundidad.setForeground(Color.black);
         txtMagnitud.setForeground(Color.black);
         txtLatitud.setForeground(Color.black);
         txtLongitud.setForeground(Color.black);
-        double val =s.getMagnitud();
-        if(2.0 <= val && val <= 6.9){
+        double val = s.getMagnitud();
+        if (2.0 <= val && val <= 6.9) {
             lbSignoMagnitud.setText("Ml");
-        }else if(val>6.9){
+        } else if (val > 6.9) {
             lbSignoMagnitud.setText("Mw");
-        }else{
+        } else {
             lbSignoMagnitud.setText("M");
         }
         btnAgregarPanel.setBackground(Color.gray);
         btnAgregar.setForeground(Color.black);
         btnAgregar.setEnabled(false);
     }
-    
-    public void cargarPanel(JPanel panel){
+
+    public void cargarPanel(JPanel panel) {
         btnAgregarPanel.removeAll();
         btnAgregarPanel.add(panel);
         btnAgregarPanel.repaint();

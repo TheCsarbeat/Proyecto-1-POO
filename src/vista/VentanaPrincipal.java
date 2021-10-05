@@ -7,6 +7,7 @@ package vista;
 
 import control.Controlador;
 import java.awt.Color;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
- /**
+/**
  *
  * @author ytces
  */
@@ -29,18 +29,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Controlador controlador = new Controlador();
     public static Color overedColor = new Color(50, 200, 186);
     public static Color normalColor = new Color(0, 150, 136);
-   
+
     public VentanaPrincipal() {
-        initComponents();      
+        initComponents();
     }
-    
-    public void cargarPanel(JPanel panel){
+
+    public void cargarPanel(JPanel panel) {
         contentPanel.removeAll();
         contentPanel.add(panel);
         contentPanel.repaint();
         contentPanel.revalidate();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,8 +55,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPanel = new javax.swing.JPanel();
         sismosMenuPanel = new javax.swing.JPanel();
         lbMenuSismos = new javax.swing.JLabel();
-        mapaMenuPanel = new javax.swing.JPanel();
-        lbMenuMapa = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
@@ -108,43 +105,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuPanel.add(sismosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 154, -1, -1));
 
-        mapaMenuPanel.setBackground(new java.awt.Color(0, 150, 136));
-        mapaMenuPanel.setPreferredSize(new java.awt.Dimension(250, 50));
-
-        lbMenuMapa.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuMapa.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuMapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuMapa.setText("Mapa");
-        lbMenuMapa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuMapaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuMapaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuMapaMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout mapaMenuPanelLayout = new javax.swing.GroupLayout(mapaMenuPanel);
-        mapaMenuPanel.setLayout(mapaMenuPanelLayout);
-        mapaMenuPanelLayout.setHorizontalGroup(
-            mapaMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mapaMenuPanelLayout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
-                .addComponent(lbMenuMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        mapaMenuPanelLayout.setVerticalGroup(
-            mapaMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mapaMenuPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbMenuMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        menuPanel.add(mapaMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
-
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 900));
 
         topPanel.setBackground(new java.awt.Color(0, 150, 136));
@@ -182,16 +142,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void lbMenuMapaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseEntered
-        // TODO add your handling code here:
-        mapaMenuPanel.setBackground(overedColor);
-    }//GEN-LAST:event_lbMenuMapaMouseEntered
-
-    private void lbMenuMapaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseExited
-        // TODO add your handling code here:
-        mapaMenuPanel.setBackground(normalColor);
-    }//GEN-LAST:event_lbMenuMapaMouseExited
-
     private void lbMenuSismosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseClicked
         // TODO add your handling code here:
         PanelSismos panel = new PanelSismos();
@@ -207,12 +157,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         sismosMenuPanel.setBackground(normalColor);
     }//GEN-LAST:event_lbMenuSismosMouseExited
-
-    private void lbMenuMapaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuMapaMouseClicked
-        // TODO add your handling code here:
-        PanelMapa panel = new PanelMapa(40.0, 110,0);
-        cargarPanel(panel);
-    }//GEN-LAST:event_lbMenuMapaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,14 +196,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JLabel lbMenuMapa;
     private javax.swing.JLabel lbMenuSismos;
-    private javax.swing.JPanel mapaMenuPanel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel sismosMenuPanel;
     private javax.swing.JPanel topPanel;
     private javax.swing.ButtonGroup zonaSismo;
     // End of variables declaration//GEN-END:variables
-
 
 }

@@ -5,19 +5,19 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""> 
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script> 
   <style>
-        .map {
-            height: 1080px;
-            width: 100%;
-        }
-    </style> 
+            .map {
+                height: 1080px;
+                width: 100%;
+            }
+        </style> 
   <title>OpenLayers example</title> 
  </head> 
  <body> 
   <h2 id="title"></h2> 
   <div id="map" class="map"></div> 
   <script id="code" type="text/javascript">
-        var latitud = 40.0;
-        var longitud = 110.0;
+        var latitud = 9.803;
+        var longitud = -84.259;
         var map = L.map('map').setView([latitud,longitud], 15);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
