@@ -6,11 +6,12 @@
 package control;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import modelo.NProvincia;
 import modelo.TOrigen;
-
+import java.util.regex.*;  
 /**
  *
  * @author erksm
@@ -280,5 +281,24 @@ public class Utilities {
             return true;
         }
          return false;
+    }
+    
+    public static boolean validarNumeroCelular(String numeroCelular){
+        return Pattern.matches("\\d{4}-\\d{4}", numeroCelular) ;
+    }
+    
+    public static boolean validarCorreo(String correo){
+        return Pattern.matches("([\\w-\\.]+)@((?:\\w+\\.)+)([a-zA-Z]{2,4})", correo) ; //"[\\w.%+-]+{4}[-]([a-zA-Z]{2,4})"
+    }
+    
+    public static boolean validarProvincias(ArrayList<NProvincia> provincias){
+        int contador =0 ; 
+        for(NProvincia i: provincias){
+            if(i != null){
+                return true;
+            }
+            contador ++;
+        }
+        return false;
     }
 }

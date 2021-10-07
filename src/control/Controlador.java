@@ -10,6 +10,7 @@ import java.io.IOException;
 import modelo.Sismo;
 import java.util.Calendar;
 import java.util.ArrayList;
+import javax.mail.MessagingException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.TOrigen;
@@ -48,6 +49,10 @@ public class Controlador {
                 profundidad, latitud, longitud, magnitud, localizacion, terrestre, origen, provincia);
         
         if(!adminS.validarExisteSismo(nuevoSismo)){
+            if(nuevoSismo.getProvincia() != null){
+                enviar(nuevoSismo);
+            }
+            
             return adminS.agregar(nuevoSismo);
         }
         return false;
@@ -76,6 +81,7 @@ public class Controlador {
         if(!adminS.validarExisteSismo(nuevoSismo)){
             return adminS.modificar(nuevoSismo);
         }
+        
         return false;
         
     }
@@ -115,8 +121,8 @@ public class Controlador {
      * @param provincias Arraylist de NProvincia con las provincias que el asocciado desea ser notificado
      * @return true/false si se agrega un asociado
      */
-    public boolean agregarAsociado(int id, String name, String correo, String celular, ArrayList<NProvincia> provincias) {
-        Asociado nuevoAsociado = new Asociado(id, name, correo, celular, provincias);
+    public boolean agregarAsociado(String name, String correo, String celular, ArrayList<NProvincia> provincias) {
+        Asociado nuevoAsociado = new Asociado(adminA.getContador(), name, correo, celular, provincias);
         return adminA.agregar(nuevoAsociado);
     }
     /**
@@ -183,7 +189,20 @@ public class Controlador {
         execelControl.guardarDatosExel(table);
     }
     
-    public void enviar(){
-        mailControl.otros();
+    public void enviar(Sismo sismo){
+        for (Asociado i:adminA.getAllAsociados()) {
+            for (NProvincia j:  i.getProvincias()) {
+                if(j != null){
+                    if(j.equals(sismo.getProvincia())){
+                        mailControl.sendEmail(sismo, i.getName(), i.getCorreo());                    
+                    }
+                }
+            }           
+        }
+       
+    }
+    
+    public void obtenerAsociados(){
+        execelControl.obtenerDatosExel(adminA);
     }
 }

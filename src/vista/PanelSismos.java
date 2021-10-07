@@ -16,6 +16,7 @@ import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 
@@ -48,7 +49,10 @@ public class PanelSismos extends javax.swing.JPanel {
         initComponents();
         
         VentanaPrincipal.controlador.obtenerDatosArchivoExel();
+        VentanaPrincipal.controlador.obtenerAsociados();
         cargarTabla();
+        //VentanaPrincipal.controlador.enviar();
+
     }
 
     /**
