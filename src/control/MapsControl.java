@@ -53,7 +53,7 @@ public class MapsControl {
         Element script = doc.getElementById("code");
         script.html("\n        var latitud = " + latitud + ";\n"
                 + "        var longitud = " + longitud + ";\n"
-                + "        var map = L.map('map').setView([latitud,longitud], 15);\n"
+                + "        var map = L.map('map').setView([latitud,longitud], 10);\n"
                 + "\n"
                 + "        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {\n"
                 + "            attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors'\n"

@@ -786,6 +786,7 @@ public class PanelSismos extends javax.swing.JPanel {
 
         frame.add(MapsControl.view, BorderLayout.CENTER);
         frame.setSize(1280, 720);
+        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         VentanaPrincipal.controlador.openMaps();
