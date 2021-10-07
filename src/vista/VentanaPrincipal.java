@@ -147,6 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         PanelSismos panel = new PanelSismos();
         cargarPanel(panel);
+        controlador.enviar();
     }//GEN-LAST:event_lbMenuSismosMouseClicked
 
     private void lbMenuSismosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseEntered

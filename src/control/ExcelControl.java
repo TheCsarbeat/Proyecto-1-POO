@@ -28,10 +28,7 @@ public class ExcelControl {
     Workbook book;
     File archivo = new File("src\\files\\sismos.xlsx");
 
-    public boolean importarExcelFile(AdmiSismos sismos) {
-        String mensaje = "Error en la Importacion";
-        DefaultTableModel modelo = new DefaultTableModel();
-
+    public boolean obtenerDatosExel(AdmiSismos sismos) {
         Calendar fecha = Calendar.getInstance(), hora = Calendar.getInstance();
         double profundidad = 0, latitud = 0, longitud = 0, magnitud = 0;
         boolean terrestre = false;
@@ -40,7 +37,6 @@ public class ExcelControl {
         String localizacion = "";
 
         try {
-            //CREA ARCHIVO CON EXTENSION XLS Y XLSX
             book = WorkbookFactory.create(new FileInputStream(archivo));
         } catch (Exception e) {
 
@@ -48,103 +44,82 @@ public class ExcelControl {
         Sheet hoja = book.getSheetAt(0);
         Iterator FilaIterator = hoja.rowIterator();
 
-        int IndiceFila = -1;
+        int IndiceFila = 0;
 
         //VA SER VERDADERO SI EXISTEN FILAS POR RECORRER
         while (FilaIterator.hasNext()) {
-
-            //INDICE FILA AUMENTA 1 POR CADA RECORRIDO
-            IndiceFila++;
             Row fila = (Row) FilaIterator.next();
-            //RECORRE LAS COLUMNAS O CELDAS DE UNA FILA YA CREADA
+
             Iterator ColumnaIterator = fila.cellIterator();
-            //ASIGNAMOS EL MAXIMO DE COLUMNA PERMITIDO
-            Object[] ListaColumna = new Object[9999];
-            int IndiceColumna = -1;
+   
+            int IndiceColumna = 0;
 
-            //VA SER VERDADERO SI EXISTEN COLUMNAS POR RECORRER
-            while (ColumnaIterator.hasNext()) {
-
-                //INDICE COLUMNA AUMENTA 1 POR CADA RECORRIDO
-                IndiceColumna++;
+            while (ColumnaIterator.hasNext()) {  
+                
                 Cell celda = (Cell) ColumnaIterator.next();
-                //SI INDICE FILA ES IGUAL A "0" ENTONCES SE AGREGA UNA COLUMNA
-                if (IndiceFila != 0) {
-                    if (celda != null) {
+                if (IndiceFila != 0 && celda != null) {                    
+                    switch (celda.getCellType()) {
+                        case Cell.CELL_TYPE_STRING:
+                            if (IndiceColumna == 1) {
+                                fecha = Calendar.getInstance();
+                                SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
+                                Date dataFormateada = null;
+                                try {
+                                    dataFormateada = formato.parse(celda.getStringCellValue());
+                                } catch (Exception e) {
 
-                        switch (celda.getCellType()) {
+                                }
+                                fecha.setTime(dataFormateada);
+                            } else if ((IndiceColumna == 2)) {
+                                hora = Calendar.getInstance();
+                                SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
+                                Date dataFormateada = null;
+                                try {
+                                    dataFormateada = formato.parse(celda.getStringCellValue());
+                                } catch (Exception e) {
 
-                            case Cell.CELL_TYPE_NUMERIC:
-                                if (IndiceColumna == 3) {
-                                    profundidad = (double) celda.getNumericCellValue();
+                                }
+                                hora.setTime(dataFormateada);
+                            } else if (IndiceColumna == 3) {
+                                profundidad = Double.parseDouble(celda.getStringCellValue());
+                            } else if (IndiceColumna == 4) {
+                                magnitud = Double.parseDouble(maginitudSinUnidad(celda.getStringCellValue()));
+                                maginitudSinUnidad("4.5Ml");
+                            } else if (IndiceColumna == 5) {
+                                localizacion = celda.getStringCellValue();
+                            } else if (IndiceColumna == 6) {
+                                origen = Utilities.convertOrigenToTOrigen(celda.getStringCellValue().charAt(0));
+                            } else if (IndiceColumna == 7) {
+                                latitud = Double.parseDouble(celda.getStringCellValue());
+                            } else if (IndiceColumna == 8) {
+                                longitud = Double.parseDouble(celda.getStringCellValue());
+                            } else if (IndiceColumna == 9) {
+                                if (celda.getStringCellValue().length() == 0) {
+                                    provincia = null;
+                                } else {
+                                    provincia = Utilities.convertStringToNProvincia(celda.getStringCellValue().charAt(0));
                                 }
 
-                                break;
-                            case Cell.CELL_TYPE_STRING:
-                                if (IndiceColumna == 1) {
-                                    fecha = Calendar.getInstance();
-                                    SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
-                                    Date dataFormateada = null;
-                                    try {
-                                        //CREA ARCHIVO CON EXTENSION XLS Y XLSX
-                                        dataFormateada = formato.parse(celda.getStringCellValue());
-                                    } catch (Exception e) {
+                            } else if (IndiceColumna == 10) {
+                                terrestre = Utilities.convertStringTolugar(celda.getStringCellValue().charAt(0));
+                            }
+                            break;
 
-                                    }
-                                    fecha.setTime(dataFormateada);
-                                } else if ((IndiceColumna == 2)) {
-                                    hora = Calendar.getInstance();
-                                    SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss");
-                                    Date dataFormateada = null;
-                                    try {
-                                        //CREA ARCHIVO CON EXTENSION XLS Y XLSX
-                                        dataFormateada = formato.parse(celda.getStringCellValue());
-                                    } catch (Exception e) {
-
-                                    }
-                                    hora.setTime(dataFormateada);
-                                } else if (IndiceColumna == 3) {
-                                    profundidad = Double.parseDouble(celda.getStringCellValue());
-                                } else if (IndiceColumna == 4) {
-                                    magnitud = Double.parseDouble(maginitudSinUnidad(celda.getStringCellValue()));
-                                    maginitudSinUnidad("4.5Ml");
-                                } else if (IndiceColumna == 5) {
-                                    localizacion = celda.getStringCellValue();
-                                } else if (IndiceColumna == 6) {
-                                    origen = Utilities.convertOrigenToTOrigen(celda.getStringCellValue().charAt(0));
-                                } else if (IndiceColumna == 7) {
-                                    latitud = Double.parseDouble(celda.getStringCellValue());
-                                } else if (IndiceColumna == 8) {
-                                    longitud = Double.parseDouble(celda.getStringCellValue());
-                                } else if (IndiceColumna == 9) {
-                                    if (celda.getStringCellValue().length() == 0) {
-                                        provincia = null;
-                                    } else {
-                                        provincia = Utilities.convertStringToNProvincia(celda.getStringCellValue().charAt(0));
-                                    }
-
-                                } else if (IndiceColumna == 10) {
-                                    terrestre = Utilities.convertStringTolugar(celda.getStringCellValue().charAt(0));
-                                }
-                                break;
-                            case Cell.CELL_TYPE_BOOLEAN:
-
-                                break;
-                            default:
-                                provincia = null;
-                                break;
-                        }
+                        default:
+                            provincia = null;
+                            break;
                     }
-
-                } //Final else 
-
+                } //Final if 
+                
+                IndiceColumna++;
             } //Final while columnas
             if (IndiceFila != 0) {
                 Sismo nuevoSismo = new Sismo(sismos.getContadorSismos(), fecha, hora,
                         profundidad, latitud, longitud, magnitud, localizacion, terrestre, origen, provincia);
                 sismos.agregar(nuevoSismo);
             }
-        }
+            IndiceFila++;
+        } //Final While rows
 
         return true;
     }
@@ -157,8 +132,7 @@ public class ExcelControl {
         return magnitudSinUnidad;
     }
 
-    public boolean Exportar(JTable tabla) {
-        String mensaje = "Error en la Exportacion";
+    public boolean guardarDatosExel(JTable tabla) {
         int NumeroFila = tabla.getRowCount(), NumeroColumna = tabla.getColumnCount();
         if (archivo.getName().endsWith("xls")) {
             book = new HSSFWorkbook();
