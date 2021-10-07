@@ -59,6 +59,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
         backgroundPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,6 +147,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         PanelSismos panel = new PanelSismos();
         cargarPanel(panel);
+        controlador.enviar();
     }//GEN-LAST:event_lbMenuSismosMouseClicked
 
     private void lbMenuSismosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseEntered

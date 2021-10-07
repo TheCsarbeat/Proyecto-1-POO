@@ -5,7 +5,8 @@
  */
 package modelo;
 import java.util.Calendar;
-import java.time.LocalTime;
+import java.util.Objects;
+import control.Utilities;
 
 /**
  *
@@ -139,6 +140,67 @@ public class Sismo {
     public void setProvincia(NProvincia provincia) {
         this.provincia = provincia;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sismo other = (Sismo) obj;
+        
+        if (Double.doubleToLongBits(this.profundidad) != Double.doubleToLongBits(other.profundidad)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.latitud) != Double.doubleToLongBits(other.latitud)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.longitud) != Double.doubleToLongBits(other.longitud)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.magnitud) != Double.doubleToLongBits(other.magnitud)) {
+            return false;
+        }
+        if (this.terrestre != other.terrestre) {
+            return false;
+        }
+        if (!Objects.equals(this.localizacion, other.localizacion)) {
+            return false;
+        }
+        String fechaS = Utilities.convertirFechaToString(this.fecha);
+        String fechaOther = Utilities.convertirFechaToString(other.fecha);
+        
+        if (!fechaS.equals(fechaOther)) {
+            return false;
+        }
+        String horaS = Utilities.convertirHoraToString(this.hora);
+        String horaOther = Utilities.convertirHoraToString(other.hora);
+
+        if (!horaS.equals(horaOther)) {
+            return false;
+        }
+        if (this.origen != other.origen) {
+            return false;
+        }
+        if (this.provincia != other.provincia) {
+            return false;
+        }
+
+        return true;
+    }
+    
+
     
     
 }

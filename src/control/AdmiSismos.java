@@ -27,7 +27,7 @@ public class AdmiSismos {
      */
     public boolean agregar(Sismo s){
         for (Sismo sismo : allSismos) {
-           if ( sismo.getId() == s.getId())
+           if (sismo.getId() == s.getId())
                 return false;
         }
         allSismos.add(s);
@@ -46,6 +46,18 @@ public class AdmiSismos {
                 return sismo;
         }
         return null;
+    }
+    /**
+     * Valida si ya existe un sismo con esos mismos datos
+     * @param obj el sismo que se quiere comparar 
+     * @return  true/false de la condicion dada
+     */
+    public boolean validarExisteSismo(Sismo obj){  
+        for (Sismo sismo : allSismos) {
+            if (sismo.equals(obj))
+                return true;
+        }
+        return false;
     }
     
     /**
