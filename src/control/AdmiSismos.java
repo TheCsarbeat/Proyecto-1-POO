@@ -118,14 +118,15 @@ public class AdmiSismos {
         return cant;
     }
     
-    public int consultarSismos(Calendar fechaIni, Calendar fechaFin){
-        int cant = 0;
+    public ArrayList<Sismo> consultarSismos(Calendar fechaIni, Calendar fechaFin){
+        ArrayList<Sismo> sismosConultados = new ArrayList();
         for (Sismo sismo : allSismos){
-            if(sismo.getFecha().after(fechaIni) && sismo.getFecha().before(fechaFin)){
-                cant++;
+            if( (sismo.getFecha().after(fechaIni) && sismo.getFecha().before(fechaFin)) || 
+                    fechaIni.compareTo(sismo.getFecha()) == 0 || fechaFin.compareTo(sismo.getFecha()) == 0){
+                sismosConultados.add(sismo);
             }
         }
-        return cant;
+        return sismosConultados;
     }
     
     public int consultarSismos(int mes, int annio){
