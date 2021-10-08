@@ -40,7 +40,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {        
         initComponents();
-        
+        controlador.obtenerDatosArchivoExel();
+        controlador.obtenerAsociados();
     }
 
     public void cargarPanel(JPanel panel) {
@@ -173,6 +174,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnTipoOrigen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grafico-de-pastel.png"))); // NOI18N
         btnTipoOrigen.setText("Tipo Origen");
         btnTipoOrigen.setToolTipText("");
+        btnTipoOrigen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTipoOrigen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnTipoOrigen.setIconTextGap(35);
         btnTipoOrigen.setInheritsPopupMenu(false);
@@ -187,7 +189,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnTipoOrigenMouseExited(evt);
             }
         });
-        panelConsulta.add(btnTipoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, 50));
+        panelConsulta.add(btnTipoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 70, 230, 50));
 
         btnProvincias.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnProvincias.setForeground(new java.awt.Color(255, 255, 255));
@@ -195,6 +197,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnProvincias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/histograma.png"))); // NOI18N
         btnProvincias.setText("Provincias");
         btnProvincias.setToolTipText("");
+        btnProvincias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProvincias.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnProvincias.setIconTextGap(35);
         btnProvincias.setInheritsPopupMenu(false);
@@ -209,7 +212,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnProvinciasMouseExited(evt);
             }
         });
-        panelConsulta.add(btnProvincias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 50));
+        panelConsulta.add(btnProvincias, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 10, 240, 50));
 
         btnMagnitud.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnMagnitud.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,6 +220,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnMagnitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tabular.png"))); // NOI18N
         btnMagnitud.setText("Magnitud");
         btnMagnitud.setToolTipText("");
+        btnMagnitud.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMagnitud.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnMagnitud.setIconTextGap(35);
         btnMagnitud.setInheritsPopupMenu(false);
@@ -231,7 +235,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnMagnitudMouseExited(evt);
             }
         });
-        panelConsulta.add(btnMagnitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, 50));
+        panelConsulta.add(btnMagnitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 250, 220, 50));
 
         btnRangoFechas.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnRangoFechas.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,6 +243,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnRangoFechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tabular.png"))); // NOI18N
         btnRangoFechas.setText("Rango Fechas");
         btnRangoFechas.setToolTipText("");
+        btnRangoFechas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRangoFechas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnRangoFechas.setIconTextGap(35);
         btnRangoFechas.setInheritsPopupMenu(false);
@@ -253,7 +258,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnRangoFechasMouseExited(evt);
             }
         });
-        panelConsulta.add(btnRangoFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 50));
+        panelConsulta.add(btnRangoFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 130, 210, 50));
 
         btnMesPorYear.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnMesPorYear.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,6 +266,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnMesPorYear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grafico-de-barras.png"))); // NOI18N
         btnMesPorYear.setText("Mes por año");
         btnMesPorYear.setToolTipText("");
+        btnMesPorYear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMesPorYear.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnMesPorYear.setIconTextGap(35);
         btnMesPorYear.setInheritsPopupMenu(false);
@@ -275,9 +281,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 btnMesPorYearMouseExited(evt);
             }
         });
-        panelConsulta.add(btnMesPorYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 170, 50));
+        panelConsulta.add(btnMesPorYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 190, 190, 50));
 
-        menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 0));
+        menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 320));
 
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 850));
 
@@ -336,6 +342,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnTipoOrigenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseClicked
         // TODO add your handling code here:
+        PanelPorOrigen panel = new PanelPorOrigen();
+        cargarPanel(panel);
     }//GEN-LAST:event_btnTipoOrigenMouseClicked
 
     private void btnTipoOrigenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseEntered
@@ -400,7 +408,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnProvinciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvinciasMouseClicked
         // TODO add your handling code here:
-        PanelSismos panel = new PanelSismos();
+        PanelPorProvincia panel = new PanelPorProvincia();
         cargarPanel(panel);
     }//GEN-LAST:event_btnProvinciasMouseClicked
 
@@ -504,8 +512,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnRangoFechas;
     private javax.swing.JLabel btnTipoOrigen;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JPanel graficosMenuPanel;
-    private javax.swing.JLabel lbMenuCharts;
     private javax.swing.JLabel lbMenuSismos;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel panelConsulta;

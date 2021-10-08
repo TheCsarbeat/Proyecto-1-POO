@@ -163,21 +163,27 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
       final String mayo = "Mayo";        
       final String junio = "Junio";        
       final String julio = "Julio";
-      final String provincias = "Agosto";
+      final String agosto = "Agosto";
       final String setiembre = "Setiembre";
       final String octubre = "Octubre";
       final String noviembre = "Noviembre";
       final String diciembre = "Diciembre";
+      final String annio = "working on it";
       
       final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
 
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.SAN_JOSE),sanjose, provincias);
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.CARTAGO) , cartago , provincias );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.HEREDIA) , heredia , provincias );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.ALAJUELA) , alajuela , provincias );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.PUNTARENAS) , puntarenas , provincias );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.GUANACASTE) , guanacaste , provincias );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.LIMON) , limon , provincias );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.SAN_JOSE),enero, annio);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.CARTAGO) , febrero , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.HEREDIA) , marzo , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.ALAJUELA) , abril , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.PUNTARENAS) , mayo , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.GUANACASTE) , junio , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.LIMON) , julio , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.SAN_JOSE),agosto, annio);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.CARTAGO) , setiembre , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.HEREDIA) , octubre , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.ALAJUELA) , noviembre , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.PUNTARENAS) , diciembre , annio );
       
       return dataset; 
    }

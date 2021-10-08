@@ -64,7 +64,7 @@ public class ExcelControl {
                         case Cell.CELL_TYPE_STRING:
                             if (IndiceColumna == 1) {
                                 fecha = Calendar.getInstance();
-                                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                                SimpleDateFormat formato = new SimpleDateFormat("d MMM y");
                                 Date dataFormateada = null;
                                 try {
                                     dataFormateada = formato.parse(celda.getStringCellValue());

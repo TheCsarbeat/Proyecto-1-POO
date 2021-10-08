@@ -24,7 +24,7 @@ public class PanelPorOrigen extends javax.swing.JPanel {
     public PanelPorOrigen() {
         initComponents();
         JFreeChart chart = ChartFactory.createPieChart3D(  
-         "Mobile Sales",   // chart title 
+         "Gráfico pastel",   // chart title 
          createDataset(),          // data    
          true,             // include legend   
          true, 

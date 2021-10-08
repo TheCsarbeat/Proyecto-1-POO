@@ -47,9 +47,6 @@ public class PanelSismos extends javax.swing.JPanel {
 
     public PanelSismos() {
         initComponents();
-        
-        VentanaPrincipal.controlador.obtenerDatosArchivoExel();
-        VentanaPrincipal.controlador.obtenerAsociados();
         cargarTabla();
         //VentanaPrincipal.controlador.enviar();
 
