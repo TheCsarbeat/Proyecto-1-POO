@@ -784,7 +784,7 @@ public class PanelSismos extends javax.swing.JPanel {
             flagRadioSelect = true;
         }
         origenFalla = cbFallas.getSelectedIndex();
-        // We created for try to identify the exact field problem
+        // We created four try to identify the exact field problem
         try {
             latitud = Double.parseDouble(txtLatitud.getText());
             flagLatitud = true;

@@ -5,7 +5,10 @@
  */
 package control;
 import java.util.ArrayList;
+import java.util.Calendar;
+import modelo.NProvincia;
 import modelo.Sismo;
+import modelo.TOrigen;
 
 /**
  *
@@ -93,6 +96,56 @@ public class AdmiSismos {
 
     public int getContadorSismos() {
         return contadorSismos;
+    }
+    
+    public int consultarSismos(NProvincia provincia){
+        int cant = 0;
+        for (Sismo sismo : allSismos){
+            if(sismo.getProvincia() == provincia){
+                cant++;
+            }
+        }
+        return cant;
+    }
+    
+    public int consultarSismos(TOrigen origen){
+        int cant = 0;
+        for (Sismo sismo : allSismos){
+            if(sismo.getOrigen() == origen){
+                cant++;
+            }
+        }
+        return cant;
+    }
+    
+    public int consultarSismos(Calendar fechaIni, Calendar fechaFin){
+        int cant = 0;
+        for (Sismo sismo : allSismos){
+            if(sismo.getFecha().after(fechaIni) && sismo.getFecha().before(fechaFin)){
+                cant++;
+            }
+        }
+        return cant;
+    }
+    
+    public int consultarSismos(int mes, int annio){
+        int cant = 0;
+        for (Sismo sismo : allSismos){
+            if(sismo.getFecha().get(Calendar.MONTH) == mes && sismo.getFecha().get(Calendar.YEAR) == annio){
+                cant++;
+            }
+        }
+        return cant;
+    }
+    
+    public int consultarSismos(double magnitud1, double magnitud2){
+        int cant = 0;
+        for (Sismo sismo : allSismos){
+            if(sismo.getMagnitud() >= magnitud1 && sismo.getMagnitud() <= magnitud2){
+                cant++;
+            }
+        }
+        return cant;
     }
     
     @Override

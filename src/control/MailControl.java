@@ -17,11 +17,9 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author erksm
+ * @author ytces
  */
-
 public class MailControl {
-    
     
     public MailControl(){
         

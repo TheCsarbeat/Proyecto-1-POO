@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,6 +56,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPanel = new javax.swing.JPanel();
         sismosMenuPanel = new javax.swing.JPanel();
         lbMenuSismos = new javax.swing.JLabel();
+        graficosMenuPanel = new javax.swing.JPanel();
+        lbMenuCharts = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
@@ -95,16 +98,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setLayout(sismosMenuPanelLayout);
         sismosMenuPanelLayout.setHorizontalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbMenuSismos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(lbMenuSismos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sismosMenuPanelLayout.setVerticalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismosMenuPanelLayout.createSequentialGroup()
+            .addGroup(sismosMenuPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lbMenuSismos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         menuPanel.add(sismosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 154, -1, -1));
+
+        graficosMenuPanel.setBackground(new java.awt.Color(0, 150, 136));
+        graficosMenuPanel.setPreferredSize(new java.awt.Dimension(250, 50));
+
+        lbMenuCharts.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuCharts.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuCharts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuCharts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuCharts.setText("Gráficos");
+        lbMenuCharts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuChartsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuChartsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuChartsMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout graficosMenuPanelLayout = new javax.swing.GroupLayout(graficosMenuPanel);
+        graficosMenuPanel.setLayout(graficosMenuPanelLayout);
+        graficosMenuPanelLayout.setHorizontalGroup(
+            graficosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbMenuCharts, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
+        graficosMenuPanelLayout.setVerticalGroup(
+            graficosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, graficosMenuPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbMenuCharts, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuPanel.add(graficosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 900));
 
@@ -160,6 +198,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setBackground(normalColor);
     }//GEN-LAST:event_lbMenuSismosMouseExited
 
+    private void lbMenuChartsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseClicked
+        // TODO add your handling code here:
+        PanelPorOrigen panel = new PanelPorOrigen();
+        cargarPanel(panel);
+    }//GEN-LAST:event_lbMenuChartsMouseClicked
+
+    private void lbMenuChartsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseEntered
+        // TODO add your handling code here:
+        graficosMenuPanel.setBackground(overedColor);
+    }//GEN-LAST:event_lbMenuChartsMouseEntered
+
+    private void lbMenuChartsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseExited
+        // TODO add your handling code here:
+        graficosMenuPanel.setBackground(normalColor);
+    }//GEN-LAST:event_lbMenuChartsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +252,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel graficosMenuPanel;
+    private javax.swing.JLabel lbMenuCharts;
     private javax.swing.JLabel lbMenuSismos;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel sismosMenuPanel;
