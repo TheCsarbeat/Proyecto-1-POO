@@ -227,4 +227,8 @@ public class Controlador {
     public int consultarSismosMagnitud(double magnitud1, double magnitud2){
         return adminS.consultarSismos(magnitud1, magnitud2);
     }
+    
+    public boolean comprobarAnnio(int annio){
+        return adminS.comprobar(annio);
+    }
 }

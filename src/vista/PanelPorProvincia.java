@@ -27,8 +27,8 @@ public class PanelPorProvincia extends javax.swing.JPanel {
         initComponents();
         JFreeChart barChart = ChartFactory.createBarChart(
          "Histograma",           
-         "Category",            
-         "Score",            
+         "Cantidad",            
+         "Provincias",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);

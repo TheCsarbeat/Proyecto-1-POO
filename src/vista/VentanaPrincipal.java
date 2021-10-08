@@ -283,7 +283,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         panelConsulta.add(btnMesPorYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 190, 190, 50));
 
-        menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 320));
+        menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 0));
 
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 850));
 
@@ -454,7 +454,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnMesPorYearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseClicked
         // TODO add your handling code here:
-        
+        PanelPorMesAnnio panel = new PanelPorMesAnnio();
+        cargarPanel(panel);
     }//GEN-LAST:event_btnMesPorYearMouseClicked
 
     private void btnMesPorYearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseEntered
