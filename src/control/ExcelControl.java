@@ -7,14 +7,14 @@ package control;
 
 import java.io.*;
 import java.util.*;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;   
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.text.SimpleDateFormat;
+import modelo.Asociado;
 import modelo.NProvincia;
 import modelo.Sismo;
 import modelo.TOrigen;
@@ -26,9 +26,10 @@ import modelo.TOrigen;
 public class ExcelControl {
 
     Workbook book;
-    File archivo = new File("src\\files\\sismos.xlsx");
+    File archivo;
 
     public boolean obtenerDatosExel(AdmiSismos sismos) {
+        
         Calendar fecha = Calendar.getInstance(), hora = Calendar.getInstance();
         double profundidad = 0, latitud = 0, longitud = 0, magnitud = 0;
         boolean terrestre = false;
@@ -37,6 +38,7 @@ public class ExcelControl {
         String localizacion = "";
 
         try {
+            archivo = new File("src\\files\\sismos.xlsx");
             book = WorkbookFactory.create(new FileInputStream(archivo));
         } catch (Exception e) {
 
@@ -123,7 +125,79 @@ public class ExcelControl {
 
         return true;
     }
+    
+    public boolean obtenerDatosExel(AdmiAsociados adminAsociados) {       
+               
+        ArrayList<NProvincia> provincias = new ArrayList();
+        String localizacion = "", nombre = "", correo = "", celular ="";
+        boolean flagCorreo, flagCelular;
 
+        try {
+            archivo = new File("src\\files\\asociados.xlsx");
+            book = WorkbookFactory.create(new FileInputStream(archivo));
+        } catch (Exception e) {
+
+        }
+        Sheet hoja = book.getSheetAt(0);
+        Iterator FilaIterator = hoja.rowIterator();
+
+        int IndiceFila = 0;
+
+        //VA SER VERDADERO SI EXISTEN FILAS POR RECORRER
+        while (FilaIterator.hasNext()) {
+            Row fila = (Row) FilaIterator.next();
+
+            Iterator ColumnaIterator = fila.cellIterator();
+   
+            int IndiceColumna = 0;
+
+            while (ColumnaIterator.hasNext()) {  
+                
+                Cell celda = (Cell) ColumnaIterator.next();
+                if (celda != null) {                    
+                    switch (celda.getCellType()) {
+                        case Cell.CELL_TYPE_STRING:
+                            if (IndiceColumna == 0) {
+                                nombre = celda.getStringCellValue();
+                            } else if ((IndiceColumna == 1)) {
+                                correo = celda.getStringCellValue();
+                            } else if (IndiceColumna == 2) {
+                                celular = celda.getStringCellValue();
+                            } else if (IndiceColumna == 3) {                                
+                                provincias = obtenerProvinciasAsociadas(celda.getStringCellValue());
+                            }
+                            break;
+
+                        default:
+                            if ((IndiceColumna == 1)) {
+                                correo = celda.getStringCellValue();
+                            } else if (IndiceColumna == 2) {
+                                celular = celda.getStringCellValue();                           
+                            }
+                            break;
+                    }
+                } //Final if 
+                
+                IndiceColumna++;
+            } //Final while columnas
+            if (IndiceFila != 0) {                
+                if((Utilities.validarCorreo(correo) || Utilities.validarNumeroCelular(celular)) && !nombre.equals("") && Utilities.validarProvincias(provincias)){                    
+                    Asociado nuevoAsociado = new Asociado(adminAsociados.getContador(), nombre, correo, celular, provincias);
+                    adminAsociados.agregar(nuevoAsociado);             
+                }
+            }
+            IndiceFila++;
+        } //Final While rows
+
+        return true;
+    }
+    public ArrayList<NProvincia> obtenerProvinciasAsociadas(String provinciasString){
+        ArrayList<NProvincia> provincias = new ArrayList();
+        for ( String i: provinciasString.split(",")) {
+            provincias.add(Utilities.convertStringToNProvincia(i.charAt(0)));
+        }
+        return provincias;
+    }
     public String maginitudSinUnidad(String magnitud) {
         String magnitudSinUnidad = "";
         for (int i = 0; i < magnitud.length() - 2; i++) {
@@ -133,6 +207,7 @@ public class ExcelControl {
     }
 
     public boolean guardarDatosExel(JTable tabla) {
+        archivo = new File("src\\files\\sismos.xlsx");
         int NumeroFila = tabla.getRowCount(), NumeroColumna = tabla.getColumnCount();
         if (archivo.getName().endsWith("xls")) {
             book = new HSSFWorkbook();

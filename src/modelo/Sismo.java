@@ -28,14 +28,6 @@ public class Sismo {
     public Sismo() {
     }
     
-    public Sismo(int num, Calendar fecha, Calendar hora, double profundidad, TOrigen origen) {
-        this.id = num;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.profundidad = profundidad;
-        this.origen = origen;
-    }
-
     public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, String localizacion, boolean terrestre, TOrigen origen, NProvincia provincia) {
         this.id = id;
         this.fecha = fecha;
