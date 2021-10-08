@@ -13,9 +13,10 @@ import modelo.Asociado;
  */
 public class AdmiAsociados {
     private ArrayList<Asociado> allAsociados = new ArrayList();
-    
+    private int contador = 0;
     public AdmiAsociados(){
         allAsociados = new ArrayList<>();
+        
     }
     
     
@@ -30,6 +31,7 @@ public class AdmiAsociados {
                 return false;
         }
         allAsociados.add(a);
+        contador++;
         return true;
     }
     
@@ -85,4 +87,10 @@ public class AdmiAsociados {
     public ArrayList<Asociado> getAllAsociados() {
         return allAsociados;
     }
+
+    public int getContador() {
+        return contador;
+    }
+    
+    
 }

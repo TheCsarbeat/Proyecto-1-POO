@@ -5,7 +5,8 @@
  */
 package modelo;
 import java.util.Calendar;
-import java.time.LocalTime;
+import java.util.Objects;
+import control.Utilities;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Sismo {
     private Calendar fecha;
     private Calendar hora;
     private double profundidad, latitud, longitud, magnitud;
+    private String localizacion;
     private boolean terrestre;
     private TOrigen origen;
     private NProvincia provincia;
@@ -26,15 +28,7 @@ public class Sismo {
     public Sismo() {
     }
     
-    public Sismo(int num, Calendar fecha, Calendar hora, double profundidad, TOrigen origen) {
-        this.id = num;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.profundidad = profundidad;
-        this.origen = origen;
-    }
-
-    public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, boolean terrestre, TOrigen origen, NProvincia provincia) {
+    public Sismo(int id, Calendar fecha, Calendar hora, double profundidad, double latitud, double longitud, double magnitud, String localizacion, boolean terrestre, TOrigen origen, NProvincia provincia) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -42,6 +36,7 @@ public class Sismo {
         this.latitud = latitud;
         this.longitud = longitud;
         this.magnitud = magnitud;
+        this.localizacion = localizacion;
         this.terrestre = terrestre;
         this.origen = origen;
         this.provincia = provincia;
@@ -76,6 +71,10 @@ public class Sismo {
         return longitud;
     }
 
+    public String getLocalizacion() {
+        return localizacion;
+    }
+    
     public double getMagnitud() {
         return magnitud;
     }
@@ -122,6 +121,10 @@ public class Sismo {
         this.magnitud = magnitud;
     }
 
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
+    }
+
     public void setTerrestre(boolean terrestre) {
         this.terrestre = terrestre;
     }
@@ -129,6 +132,67 @@ public class Sismo {
     public void setProvincia(NProvincia provincia) {
         this.provincia = provincia;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sismo other = (Sismo) obj;
+        
+        if (Double.doubleToLongBits(this.profundidad) != Double.doubleToLongBits(other.profundidad)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.latitud) != Double.doubleToLongBits(other.latitud)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.longitud) != Double.doubleToLongBits(other.longitud)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.magnitud) != Double.doubleToLongBits(other.magnitud)) {
+            return false;
+        }
+        if (this.terrestre != other.terrestre) {
+            return false;
+        }
+        if (!Objects.equals(this.localizacion, other.localizacion)) {
+            return false;
+        }
+        String fechaS = Utilities.convertirFechaToString(this.fecha);
+        String fechaOther = Utilities.convertirFechaToString(other.fecha);
+        
+        if (!fechaS.equals(fechaOther)) {
+            return false;
+        }
+        String horaS = Utilities.convertirHoraToString(this.hora);
+        String horaOther = Utilities.convertirHoraToString(other.hora);
+
+        if (!horaS.equals(horaOther)) {
+            return false;
+        }
+        if (this.origen != other.origen) {
+            return false;
+        }
+        if (this.provincia != other.provincia) {
+            return false;
+        }
+
+        return true;
+    }
+    
+
     
     
 }
