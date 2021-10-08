@@ -439,7 +439,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnRangoFechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseClicked
         // TODO add your handling code here:
-
+        PanelRangoFechas panel = new PanelRangoFechas();
+        cargarPanel(panel);
     }//GEN-LAST:event_btnRangoFechasMouseClicked
 
     private void btnRangoFechasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseEntered
