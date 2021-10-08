@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -30,8 +31,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Color overedColor = new Color(50, 200, 186);
     public static Color normalColor = new Color(0, 150, 136);
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal() {        
         initComponents();
+        
     }
 
     public void cargarPanel(JPanel panel) {
@@ -55,6 +57,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPanel = new javax.swing.JPanel();
         sismosMenuPanel = new javax.swing.JPanel();
         lbMenuSismos = new javax.swing.JLabel();
+        sismosMenuPanel3 = new javax.swing.JPanel();
+        lbMenuSismos3 = new javax.swing.JLabel();
+        panelConsulta = new javax.swing.JPanel();
+        lbMenuSismos2 = new javax.swing.JLabel();
+        lbMenuSismos4 = new javax.swing.JLabel();
+        lbMenuSismos5 = new javax.swing.JLabel();
+        lbMenuSismos6 = new javax.swing.JLabel();
+        lbMenuSismos7 = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
@@ -95,7 +105,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setLayout(sismosMenuPanelLayout);
         sismosMenuPanelLayout.setHorizontalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbMenuSismos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismosMenuPanelLayout.createSequentialGroup()
+                .addGap(0, 36, Short.MAX_VALUE)
+                .addComponent(lbMenuSismos, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         sismosMenuPanelLayout.setVerticalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +116,155 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(lbMenuSismos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuPanel.add(sismosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 154, -1, -1));
+        menuPanel.add(sismosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        sismosMenuPanel3.setBackground(new java.awt.Color(0, 150, 136));
+        sismosMenuPanel3.setPreferredSize(new java.awt.Dimension(250, 50));
+
+        lbMenuSismos3.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos3.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos3.setText("Consultas");
+        lbMenuSismos3.setToolTipText("");
+        lbMenuSismos3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos3.setInheritsPopupMenu(false);
+        lbMenuSismos3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos3MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sismosMenuPanel3Layout = new javax.swing.GroupLayout(sismosMenuPanel3);
+        sismosMenuPanel3.setLayout(sismosMenuPanel3Layout);
+        sismosMenuPanel3Layout.setHorizontalGroup(
+            sismosMenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbMenuSismos3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
+        sismosMenuPanel3Layout.setVerticalGroup(
+            sismosMenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismosMenuPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbMenuSismos3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuPanel.add(sismosMenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        panelConsulta.setBackground(new java.awt.Color(49, 49, 74));
+        panelConsulta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbMenuSismos2.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos2.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos2.setText("Consultas");
+        lbMenuSismos2.setToolTipText("");
+        lbMenuSismos2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos2.setInheritsPopupMenu(false);
+        lbMenuSismos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos2MouseExited(evt);
+            }
+        });
+        panelConsulta.add(lbMenuSismos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, 50));
+
+        lbMenuSismos4.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos4.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos4.setText("Consultas");
+        lbMenuSismos4.setToolTipText("");
+        lbMenuSismos4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos4.setInheritsPopupMenu(false);
+        lbMenuSismos4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos4MouseExited(evt);
+            }
+        });
+        panelConsulta.add(lbMenuSismos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 50));
+
+        lbMenuSismos5.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos5.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos5.setText("Consultas");
+        lbMenuSismos5.setToolTipText("");
+        lbMenuSismos5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos5.setInheritsPopupMenu(false);
+        lbMenuSismos5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos5MouseExited(evt);
+            }
+        });
+        panelConsulta.add(lbMenuSismos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, 50));
+
+        lbMenuSismos6.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos6.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos6.setText("Consultas");
+        lbMenuSismos6.setToolTipText("");
+        lbMenuSismos6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos6.setInheritsPopupMenu(false);
+        lbMenuSismos6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos6MouseExited(evt);
+            }
+        });
+        panelConsulta.add(lbMenuSismos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 50));
+
+        lbMenuSismos7.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbMenuSismos7.setForeground(new java.awt.Color(255, 255, 255));
+        lbMenuSismos7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMenuSismos7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
+        lbMenuSismos7.setText("Consultas");
+        lbMenuSismos7.setToolTipText("");
+        lbMenuSismos7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos7.setInheritsPopupMenu(false);
+        lbMenuSismos7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMenuSismos7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbMenuSismos7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbMenuSismos7MouseExited(evt);
+            }
+        });
+        panelConsulta.add(lbMenuSismos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 180, 50));
+
+        menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 0));
 
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 900));
 
@@ -160,6 +320,109 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setBackground(normalColor);
     }//GEN-LAST:event_lbMenuSismosMouseExited
 
+    private void lbMenuSismos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos2MouseClicked
+
+    private void lbMenuSismos2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos2MouseEntered
+
+    private void lbMenuSismos2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos2MouseExited
+
+    private void lbMenuSismos3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseClicked
+        int altura = panelConsulta.getHeight();
+        int ancho = 200;
+        if (altura == 0 ) {
+            Thread th = new Thread() {
+                @Override
+                public void run(){
+                    try {                        
+                        for ( int i = 0; i <=320; i++){
+                            Thread.sleep(1);
+                            panelConsulta.setSize(ancho, i);
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            };th.start();
+        }else if( altura == 320 ){
+            
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try {
+                        for (int i = 320; i >= 0; i--){
+                            Thread.sleep(1);
+                            panelConsulta.setSize(ancho, i);
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            };th.start();
+        }
+    }//GEN-LAST:event_lbMenuSismos3MouseClicked
+
+    private void lbMenuSismos3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos3MouseEntered
+
+    private void lbMenuSismos3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos3MouseExited
+
+    private void lbMenuSismos4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos4MouseClicked
+
+    private void lbMenuSismos4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos4MouseEntered
+
+    private void lbMenuSismos4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos4MouseExited
+
+    private void lbMenuSismos5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos5MouseClicked
+
+    private void lbMenuSismos5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos5MouseEntered
+
+    private void lbMenuSismos5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos5MouseExited
+
+    private void lbMenuSismos6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos6MouseClicked
+
+    private void lbMenuSismos6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos6MouseEntered
+
+    private void lbMenuSismos6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos6MouseExited
+
+    private void lbMenuSismos7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos7MouseClicked
+
+    private void lbMenuSismos7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos7MouseEntered
+
+    private void lbMenuSismos7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMenuSismos7MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -199,8 +462,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lbMenuSismos;
+    private javax.swing.JLabel lbMenuSismos2;
+    private javax.swing.JLabel lbMenuSismos3;
+    private javax.swing.JLabel lbMenuSismos4;
+    private javax.swing.JLabel lbMenuSismos5;
+    private javax.swing.JLabel lbMenuSismos6;
+    private javax.swing.JLabel lbMenuSismos7;
     private javax.swing.JPanel menuPanel;
+    private javax.swing.JPanel panelConsulta;
     private javax.swing.JPanel sismosMenuPanel;
+    private javax.swing.JPanel sismosMenuPanel3;
     private javax.swing.JPanel topPanel;
     private javax.swing.ButtonGroup zonaSismo;
     // End of variables declaration//GEN-END:variables
