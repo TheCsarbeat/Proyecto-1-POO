@@ -106,6 +106,7 @@ public class PanelSismos extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1280, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -361,6 +362,7 @@ public class PanelSismos extends javax.swing.JPanel {
         btnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.setIconTextGap(20);
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseClicked(evt);
@@ -421,6 +423,7 @@ public class PanelSismos extends javax.swing.JPanel {
         btnLimpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setIconTextGap(20);
         btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLimpiarMouseClicked(evt);
@@ -462,6 +465,7 @@ public class PanelSismos extends javax.swing.JPanel {
         btnModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editar-texto.png"))); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.setIconTextGap(20);
         btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnModificarMouseClicked(evt);
@@ -492,11 +496,13 @@ public class PanelSismos extends javax.swing.JPanel {
         btnEliminarPanel.setBackground(new java.awt.Color(0, 150, 136));
         btnEliminarPanel.setPreferredSize(new java.awt.Dimension(250, 50));
 
+        btnEliminar.setBackground(new java.awt.Color(0, 150, 136));
         btnEliminar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.setIconTextGap(20);
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarMouseClicked(evt);
