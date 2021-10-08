@@ -20,11 +20,9 @@ import modelo.Sismo;
 
 /**
  *
- * @author erksm
+ * @author ytces
  */
-
 public class MailControl {
-    
     
     public MailControl(){
         
