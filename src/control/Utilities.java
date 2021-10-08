@@ -36,7 +36,7 @@ public class Utilities {
      */
     public static String convertirFechaToString(Calendar date){         
         Date Newdate = date.getTime();
-        SimpleDateFormat format1 = new SimpleDateFormat("d MMM y");
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         return format1.format(Newdate);        
     }
     
