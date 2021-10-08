@@ -7,12 +7,16 @@ package vista;
 
 import control.Controlador;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,6 +34,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Controlador controlador = new Controlador();
     public static Color overedColor = new Color(50, 200, 186);
     public static Color normalColor = new Color(0, 150, 136);
+    public static Color blanco = new Color(255,255,255);
+
 
     public VentanaPrincipal() {        
         initComponents();
@@ -57,14 +63,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuPanel = new javax.swing.JPanel();
         sismosMenuPanel = new javax.swing.JPanel();
         lbMenuSismos = new javax.swing.JLabel();
-        sismosMenuPanel3 = new javax.swing.JPanel();
-        lbMenuSismos3 = new javax.swing.JLabel();
+        btnConsultasPanel = new javax.swing.JPanel();
+        btnConsultas = new javax.swing.JLabel();
         panelConsulta = new javax.swing.JPanel();
-        lbMenuSismos2 = new javax.swing.JLabel();
-        lbMenuSismos4 = new javax.swing.JLabel();
-        lbMenuSismos5 = new javax.swing.JLabel();
-        lbMenuSismos6 = new javax.swing.JLabel();
-        lbMenuSismos7 = new javax.swing.JLabel();
+        btnTipoOrigen = new javax.swing.JLabel();
+        btnProvincias = new javax.swing.JLabel();
+        btnMagnitud = new javax.swing.JLabel();
+        btnRangoFechas = new javax.swing.JLabel();
+        btnMesPorYear = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
@@ -78,7 +84,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         backgroundPanel.setPreferredSize(new java.awt.Dimension(600, 500));
         backgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menuPanel.setBackground(new java.awt.Color(49, 49, 74));
+        menuPanel.setBackground(new java.awt.Color(120, 120, 120));
         menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         sismosMenuPanel.setBackground(new java.awt.Color(0, 150, 136));
@@ -89,6 +95,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lbMenuSismos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMenuSismos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
         lbMenuSismos.setText("SISMOS");
+        lbMenuSismos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbMenuSismos.setIconTextGap(35);
         lbMenuSismos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbMenuSismosMouseClicked(evt);
@@ -105,9 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setLayout(sismosMenuPanelLayout);
         sismosMenuPanelLayout.setHorizontalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismosMenuPanelLayout.createSequentialGroup()
-                .addGap(0, 36, Short.MAX_VALUE)
-                .addComponent(lbMenuSismos, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lbMenuSismos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
         sismosMenuPanelLayout.setVerticalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,155 +124,161 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuPanel.add(sismosMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        sismosMenuPanel3.setBackground(new java.awt.Color(0, 150, 136));
-        sismosMenuPanel3.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnConsultasPanel.setBackground(new java.awt.Color(0, 150, 136));
+        btnConsultasPanel.setPreferredSize(new java.awt.Dimension(250, 50));
 
-        lbMenuSismos3.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos3.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos3.setText("Consultas");
-        lbMenuSismos3.setToolTipText("");
-        lbMenuSismos3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos3.setInheritsPopupMenu(false);
-        lbMenuSismos3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConsultas.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnConsultas.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-derecha.png"))); // NOI18N
+        btnConsultas.setText("Consultas");
+        btnConsultas.setToolTipText("");
+        btnConsultas.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnConsultas.setIconTextGap(50);
+        btnConsultas.setInheritsPopupMenu(false);
+        btnConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos3MouseClicked(evt);
+                btnConsultasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos3MouseEntered(evt);
+                btnConsultasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos3MouseExited(evt);
+                btnConsultasMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout sismosMenuPanel3Layout = new javax.swing.GroupLayout(sismosMenuPanel3);
-        sismosMenuPanel3.setLayout(sismosMenuPanel3Layout);
-        sismosMenuPanel3Layout.setHorizontalGroup(
-            sismosMenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbMenuSismos3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        javax.swing.GroupLayout btnConsultasPanelLayout = new javax.swing.GroupLayout(btnConsultasPanel);
+        btnConsultasPanel.setLayout(btnConsultasPanelLayout);
+        btnConsultasPanelLayout.setHorizontalGroup(
+            btnConsultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnConsultas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
-        sismosMenuPanel3Layout.setVerticalGroup(
-            sismosMenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sismosMenuPanel3Layout.createSequentialGroup()
+        btnConsultasPanelLayout.setVerticalGroup(
+            btnConsultasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnConsultasPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbMenuSismos3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        menuPanel.add(sismosMenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        menuPanel.add(btnConsultasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        panelConsulta.setBackground(new java.awt.Color(49, 49, 74));
+        panelConsulta.setBackground(new java.awt.Color(120, 120, 120));
         panelConsulta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbMenuSismos2.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos2.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos2.setText("Consultas");
-        lbMenuSismos2.setToolTipText("");
-        lbMenuSismos2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos2.setInheritsPopupMenu(false);
-        lbMenuSismos2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTipoOrigen.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnTipoOrigen.setForeground(new java.awt.Color(255, 255, 255));
+        btnTipoOrigen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnTipoOrigen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grafico-de-pastel.png"))); // NOI18N
+        btnTipoOrigen.setText("Tipo Origen");
+        btnTipoOrigen.setToolTipText("");
+        btnTipoOrigen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnTipoOrigen.setIconTextGap(35);
+        btnTipoOrigen.setInheritsPopupMenu(false);
+        btnTipoOrigen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos2MouseClicked(evt);
+                btnTipoOrigenMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos2MouseEntered(evt);
+                btnTipoOrigenMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos2MouseExited(evt);
+                btnTipoOrigenMouseExited(evt);
             }
         });
-        panelConsulta.add(lbMenuSismos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, 50));
+        panelConsulta.add(btnTipoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 180, 50));
 
-        lbMenuSismos4.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos4.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos4.setText("Consultas");
-        lbMenuSismos4.setToolTipText("");
-        lbMenuSismos4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos4.setInheritsPopupMenu(false);
-        lbMenuSismos4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProvincias.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnProvincias.setForeground(new java.awt.Color(255, 255, 255));
+        btnProvincias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnProvincias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/histograma.png"))); // NOI18N
+        btnProvincias.setText("Provincias");
+        btnProvincias.setToolTipText("");
+        btnProvincias.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnProvincias.setIconTextGap(35);
+        btnProvincias.setInheritsPopupMenu(false);
+        btnProvincias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos4MouseClicked(evt);
+                btnProvinciasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos4MouseEntered(evt);
+                btnProvinciasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos4MouseExited(evt);
+                btnProvinciasMouseExited(evt);
             }
         });
-        panelConsulta.add(lbMenuSismos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 50));
+        panelConsulta.add(btnProvincias, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 50));
 
-        lbMenuSismos5.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos5.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos5.setText("Consultas");
-        lbMenuSismos5.setToolTipText("");
-        lbMenuSismos5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos5.setInheritsPopupMenu(false);
-        lbMenuSismos5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMagnitud.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnMagnitud.setForeground(new java.awt.Color(255, 255, 255));
+        btnMagnitud.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMagnitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tabular.png"))); // NOI18N
+        btnMagnitud.setText("Magnitud");
+        btnMagnitud.setToolTipText("");
+        btnMagnitud.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnMagnitud.setIconTextGap(35);
+        btnMagnitud.setInheritsPopupMenu(false);
+        btnMagnitud.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos5MouseClicked(evt);
+                btnMagnitudMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos5MouseEntered(evt);
+                btnMagnitudMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos5MouseExited(evt);
+                btnMagnitudMouseExited(evt);
             }
         });
-        panelConsulta.add(lbMenuSismos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, 50));
+        panelConsulta.add(btnMagnitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 180, 50));
 
-        lbMenuSismos6.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos6.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos6.setText("Consultas");
-        lbMenuSismos6.setToolTipText("");
-        lbMenuSismos6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos6.setInheritsPopupMenu(false);
-        lbMenuSismos6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRangoFechas.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnRangoFechas.setForeground(new java.awt.Color(255, 255, 255));
+        btnRangoFechas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRangoFechas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tabular.png"))); // NOI18N
+        btnRangoFechas.setText("Rango Fechas");
+        btnRangoFechas.setToolTipText("");
+        btnRangoFechas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnRangoFechas.setIconTextGap(35);
+        btnRangoFechas.setInheritsPopupMenu(false);
+        btnRangoFechas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos6MouseClicked(evt);
+                btnRangoFechasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos6MouseEntered(evt);
+                btnRangoFechasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos6MouseExited(evt);
+                btnRangoFechasMouseExited(evt);
             }
         });
-        panelConsulta.add(lbMenuSismos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 50));
+        panelConsulta.add(btnRangoFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 50));
 
-        lbMenuSismos7.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        lbMenuSismos7.setForeground(new java.awt.Color(255, 255, 255));
-        lbMenuSismos7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbMenuSismos7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clipboard.png"))); // NOI18N
-        lbMenuSismos7.setText("Consultas");
-        lbMenuSismos7.setToolTipText("");
-        lbMenuSismos7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lbMenuSismos7.setInheritsPopupMenu(false);
-        lbMenuSismos7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMesPorYear.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        btnMesPorYear.setForeground(new java.awt.Color(255, 255, 255));
+        btnMesPorYear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMesPorYear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grafico-de-barras.png"))); // NOI18N
+        btnMesPorYear.setText("Mes por año");
+        btnMesPorYear.setToolTipText("");
+        btnMesPorYear.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnMesPorYear.setIconTextGap(35);
+        btnMesPorYear.setInheritsPopupMenu(false);
+        btnMesPorYear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMenuSismos7MouseClicked(evt);
+                btnMesPorYearMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbMenuSismos7MouseEntered(evt);
+                btnMesPorYearMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbMenuSismos7MouseExited(evt);
+                btnMesPorYearMouseExited(evt);
             }
         });
-        panelConsulta.add(lbMenuSismos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 180, 50));
+        panelConsulta.add(btnMesPorYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 170, 50));
 
         menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 0));
 
-        backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 900));
+        backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 850));
 
         topPanel.setBackground(new java.awt.Color(0, 150, 136));
 
@@ -274,17 +286,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1310, Short.MAX_VALUE)
+            .addGap(0, 1600, Short.MAX_VALUE)
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        backgroundPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1310, 50));
+        backgroundPanel.add(topPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 50));
 
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.setLayout(new java.awt.CardLayout());
-        backgroundPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 1300, 850));
+        backgroundPanel.add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 1300, 850));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -320,22 +333,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setBackground(normalColor);
     }//GEN-LAST:event_lbMenuSismosMouseExited
 
-    private void lbMenuSismos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseClicked
+    private void btnTipoOrigenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos2MouseClicked
+    }//GEN-LAST:event_btnTipoOrigenMouseClicked
 
-    private void lbMenuSismos2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseEntered
+    private void btnTipoOrigenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos2MouseEntered
+        btnTipoOrigen.setForeground(overedColor);
+    }//GEN-LAST:event_btnTipoOrigenMouseEntered
 
-    private void lbMenuSismos2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos2MouseExited
+    private void btnTipoOrigenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos2MouseExited
+        btnTipoOrigen.setForeground(blanco);
+    }//GEN-LAST:event_btnTipoOrigenMouseExited
 
-    private void lbMenuSismos3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseClicked
+    private void btnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseClicked
+
         int altura = panelConsulta.getHeight();
         int ancho = 200;
         if (altura == 0 ) {
+            
+            ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-abajo.png");
+            btnConsultas.setIcon(imageIcon);
             Thread th = new Thread() {
                 @Override
                 public void run(){
@@ -350,7 +369,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             };th.start();
         }else if( altura == 320 ){
-            
+            ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
+            btnConsultas.setIcon(imageIcon);
             Thread th = new Thread(){
                 @Override
                 public void run(){
@@ -365,63 +385,78 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             };th.start();
         }
-    }//GEN-LAST:event_lbMenuSismos3MouseClicked
+    }//GEN-LAST:event_btnConsultasMouseClicked
 
-    private void lbMenuSismos3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseEntered
+    private void btnConsultasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos3MouseEntered
+        btnConsultasPanel.setBackground(overedColor);
+    }//GEN-LAST:event_btnConsultasMouseEntered
 
-    private void lbMenuSismos3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos3MouseExited
+    private void btnConsultasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos3MouseExited
+        btnConsultasPanel.setBackground(normalColor);
+    }//GEN-LAST:event_btnConsultasMouseExited
 
-    private void lbMenuSismos4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseClicked
+    private void btnProvinciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvinciasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos4MouseClicked
+        PanelSismos panel = new PanelSismos();
+        cargarPanel(panel);
+    }//GEN-LAST:event_btnProvinciasMouseClicked
 
-    private void lbMenuSismos4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseEntered
+    private void btnProvinciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvinciasMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos4MouseEntered
+        btnProvincias.setForeground(overedColor);
+    }//GEN-LAST:event_btnProvinciasMouseEntered
 
-    private void lbMenuSismos4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos4MouseExited
+    private void btnProvinciasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvinciasMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos4MouseExited
+         btnProvincias.setForeground(blanco);
+    }//GEN-LAST:event_btnProvinciasMouseExited
 
-    private void lbMenuSismos5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseClicked
+    private void btnMagnitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagnitudMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos5MouseClicked
 
-    private void lbMenuSismos5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos5MouseEntered
+    }//GEN-LAST:event_btnMagnitudMouseClicked
 
-    private void lbMenuSismos5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos5MouseExited
+    private void btnMagnitudMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagnitudMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos5MouseExited
+        btnMagnitud.setForeground(overedColor);
+    }//GEN-LAST:event_btnMagnitudMouseEntered
 
-    private void lbMenuSismos6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseClicked
+    private void btnMagnitudMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMagnitudMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos6MouseClicked
+        btnMagnitud.setForeground(blanco);
+    }//GEN-LAST:event_btnMagnitudMouseExited
 
-    private void lbMenuSismos6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseEntered
+    private void btnRangoFechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos6MouseEntered
 
-    private void lbMenuSismos6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos6MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos6MouseExited
+    }//GEN-LAST:event_btnRangoFechasMouseClicked
 
-    private void lbMenuSismos7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseClicked
+    private void btnRangoFechasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos7MouseClicked
+        btnRangoFechas.setForeground(overedColor);
+    }//GEN-LAST:event_btnRangoFechasMouseEntered
 
-    private void lbMenuSismos7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseEntered
+    private void btnRangoFechasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos7MouseEntered
+        btnRangoFechas.setForeground(blanco);
+    }//GEN-LAST:event_btnRangoFechasMouseExited
 
-    private void lbMenuSismos7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismos7MouseExited
+    private void btnMesPorYearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lbMenuSismos7MouseExited
+        
+    }//GEN-LAST:event_btnMesPorYearMouseClicked
+
+    private void btnMesPorYearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseEntered
+        // TODO add your handling code here:
+        btnMesPorYear.setForeground(overedColor);
+    }//GEN-LAST:event_btnMesPorYearMouseEntered
+
+    private void btnMesPorYearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseExited
+        // TODO add your handling code here:
+        btnMesPorYear.setForeground(blanco);
+    }//GEN-LAST:event_btnMesPorYearMouseExited
 
     /**
      * @param args the command line arguments
@@ -460,18 +495,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundPanel;
+    private javax.swing.JLabel btnConsultas;
+    private javax.swing.JPanel btnConsultasPanel;
+    private javax.swing.JLabel btnMagnitud;
+    private javax.swing.JLabel btnMesPorYear;
+    private javax.swing.JLabel btnProvincias;
+    private javax.swing.JLabel btnRangoFechas;
+    private javax.swing.JLabel btnTipoOrigen;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lbMenuSismos;
-    private javax.swing.JLabel lbMenuSismos2;
-    private javax.swing.JLabel lbMenuSismos3;
-    private javax.swing.JLabel lbMenuSismos4;
-    private javax.swing.JLabel lbMenuSismos5;
-    private javax.swing.JLabel lbMenuSismos6;
-    private javax.swing.JLabel lbMenuSismos7;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel panelConsulta;
     private javax.swing.JPanel sismosMenuPanel;
-    private javax.swing.JPanel sismosMenuPanel3;
     private javax.swing.JPanel topPanel;
     private javax.swing.ButtonGroup zonaSismo;
     // End of variables declaration//GEN-END:variables

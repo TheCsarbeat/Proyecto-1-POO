@@ -191,13 +191,15 @@ public class Controlador {
     
     public void enviar(Sismo sismo){
         for (Asociado i:adminA.getAllAsociados()) {
-            for (NProvincia j:  i.getProvincias()) {
-                if(j != null){
-                    if(j.equals(sismo.getProvincia())){
-                        mailControl.sendEmail(sismo, i.getName(), i.getCorreo());                    
+            if(!i.getCorreo().equals("")){        
+                for (NProvincia j:  i.getProvincias()) {
+                    if(j != null){
+                        if(j.equals(sismo.getProvincia())){
+                            mailControl.sendEmail(sismo, i.getName(), i.getCorreo());                    
+                        }
                     }
-                }
-            }           
+                }     
+            }
         }
        
     }
