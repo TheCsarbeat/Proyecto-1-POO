@@ -207,4 +207,24 @@ public class Controlador {
     public void obtenerAsociados(){
         execelControl.obtenerDatosExel(adminA);
     }
+    
+    public int consultarSismosProvincia(NProvincia provincia){
+        return adminS.consultarSismos(provincia);
+    }
+    
+    public int consultarSismosOrigen(TOrigen origen){
+        return adminS.consultarSismos(origen);
+    }
+    
+    public int consultarSismosRangoFecha(Calendar fechaIni, Calendar fechaFin){
+        return adminS.consultarSismos(fechaIni, fechaFin);
+    }
+    
+    public int consultarSismosMes(int mes, int annio){
+        return adminS.consultarSismos(mes, annio);
+    }
+    
+    public int consultarSismosMagnitud(double magnitud1, double magnitud2){
+        return adminS.consultarSismos(magnitud1, magnitud2);
+    }
 }
