@@ -23,25 +23,21 @@ import javax.swing.table.TableModel;
  *
  * @author erksm
  */
-public class PanelRangoFechas extends javax.swing.JPanel {
+public class PanelMagnitud extends javax.swing.JPanel {
 
     /**
      * Creates new form panelSismos
      */
 
     //Varaibles declaration
-    private Calendar fechaInicial = null;
-    private Calendar fechaFinal = null;
-
-
-
-    //To open map
-    private JFrame frame = new JFrame();
-
-    public PanelRangoFechas() {
+    private double magnitudInicial = 0;
+    private double magnitudFinal = 0;
+    private int index = -1;
+    public PanelMagnitud() {
         initComponents();
         ArrayList<Sismo> sismos = new ArrayList();
         cargarTabla(sismos);
+
     }
 
     /**
@@ -54,30 +50,17 @@ public class PanelRangoFechas extends javax.swing.JPanel {
     private void initComponents() {
 
         radioZonaSismo = new javax.swing.ButtonGroup();
-        dateFechaInicial = new com.toedter.calendar.JDateChooser();
-        lbFechaSismo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSismos = new javax.swing.JTable();
         btnAgregarPanel = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JLabel();
-        dateFechaFinal = new com.toedter.calendar.JDateChooser();
         lbFechaSismo1 = new javax.swing.JLabel();
+        cboMagnitud = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1280, 560));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        dateFechaInicial.setBackground(new java.awt.Color(255, 255, 255));
-        dateFechaInicial.setName("dateChooserFechaSismo"); // NOI18N
-        add(dateFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 370, -1));
-
-        lbFechaSismo.setBackground(new java.awt.Color(0, 0, 0));
-        lbFechaSismo.setFont(new java.awt.Font("Roboto Slab Light", 1, 14)); // NOI18N
-        lbFechaSismo.setForeground(new java.awt.Color(0, 0, 0));
-        lbFechaSismo.setText("Fecha del Sismo Final");
-        lbFechaSismo.setToolTipText("");
-        add(lbFechaSismo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 170, 50));
 
         tableSismos.setBackground(new java.awt.Color(255, 255, 255));
         tableSismos.setModel(new javax.swing.table.DefaultTableModel(
@@ -145,22 +128,19 @@ public class PanelRangoFechas extends javax.swing.JPanel {
 
         add(btnAgregarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 50, 230, -1));
 
-        dateFechaFinal.setBackground(new java.awt.Color(255, 255, 255));
-        dateFechaFinal.setName("dateChooserFechaSismo"); // NOI18N
-        add(dateFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 400, -1));
-
         lbFechaSismo1.setBackground(new java.awt.Color(0, 0, 0));
         lbFechaSismo1.setFont(new java.awt.Font("Roboto Slab Light", 1, 14)); // NOI18N
         lbFechaSismo1.setForeground(new java.awt.Color(0, 0, 0));
-        lbFechaSismo1.setText("Fecha del Sismo Inicial");
+        lbFechaSismo1.setText("Seleccione la magnitud");
         lbFechaSismo1.setToolTipText("");
         add(lbFechaSismo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 50));
+
+        cboMagnitud.setBackground(new java.awt.Color(255, 255, 255));
+        cboMagnitud.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
+        cboMagnitud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Micro", "Menor", "Ligero", "Moderado", "Fuerte", "Mayor", "Gran", "Épico" }));
+        add(cboMagnitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 370, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    
-    
-   
     
     //------------------Buttons-------------------
     //btnAgregar methods
@@ -179,17 +159,13 @@ public class PanelRangoFechas extends javax.swing.JPanel {
             //get the data of the fields
         obtenerDatos();
         //Validaci[on de los datos
-        if (fechaInicial == null || fechaFinal == null) {
-            JOptionPane.showMessageDialog(null, "Debe selecionar fechas para comparar!", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (fechaInicial.compareTo(fechaFinal) == 1) {
-            JOptionPane.showMessageDialog(null, "Rango de fechas no es correcto!", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-                ArrayList<Sismo> sismos = VentanaPrincipal.controlador.consultarSismosRangoFecha(fechaInicial, fechaFinal);
-             if (sismos.isEmpty()) {
+        
+        ArrayList<Sismo> sismos = VentanaPrincipal.controlador.consultarSismosMagnitud(index);
+        if (sismos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No se han encontrado dato", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
-            }
-            cargarTabla(sismos);
         }
+        cargarTabla(sismos);
+        
         
     }
 
@@ -204,8 +180,7 @@ public class PanelRangoFechas extends javax.swing.JPanel {
     
     // get data of the fields
     private void obtenerDatos(){
-        fechaInicial = dateFechaInicial.getCalendar();
-        fechaFinal = dateFechaFinal.getCalendar();
+        index = cboMagnitud.getSelectedIndex();
     }
     
     
@@ -216,19 +191,12 @@ public class PanelRangoFechas extends javax.swing.JPanel {
         tableSismos.setDefaultEditor(Object.class, null);
     }
     
-    // mapa
-   
-    
-        
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAgregar;
     private javax.swing.JPanel btnAgregarPanel;
-    private com.toedter.calendar.JDateChooser dateFechaFinal;
-    private com.toedter.calendar.JDateChooser dateFechaInicial;
+    private javax.swing.JComboBox<String> cboMagnitud;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbFechaSismo;
     private javax.swing.JLabel lbFechaSismo1;
     private javax.swing.ButtonGroup radioZonaSismo;
     private javax.swing.JTable tableSismos;

@@ -228,7 +228,7 @@ public class Controlador {
         return adminS.consultarSismos(mes, annio);
     }
     
-    public int consultarSismosMagnitud(double magnitud1, double magnitud2){
-        return adminS.consultarSismos(magnitud1, magnitud2);
+    public ArrayList<Sismo> consultarSismosMagnitud( int index){
+        return adminS.consultarSismos(index);
     }
 }
