@@ -96,7 +96,7 @@ public class AdmiSismos {
 
     /**
      * Retorna el contador de sismos, el cual almacena la cantidad total de sismos registrados
-     * @return 
+     * @return un int de cantidad de sismos total
      */
     public int getContadorSismos() {
         return contadorSismos;
@@ -104,7 +104,7 @@ public class AdmiSismos {
     /**
      * Retorna la cantidad de sismos registrados en un provincia especifica
      * @param provincia es la provincia en la que se desea contar los sismos
-     * @return 
+     * @return un int de cantidad de sismos filtrados
      */
     public int consultarSismos(NProvincia provincia){
         int cant = 0;
@@ -118,7 +118,7 @@ public class AdmiSismos {
     /**
      * Retorna la cantidad de sismos con un tipo de origen especifico
      * @param origen es el origen de los sismos que se quiere contar
-     * @return 
+     * @return un int de cantidad de sismos filtrados
      */
     public int consultarSismos(TOrigen origen){
         int cant = 0;
@@ -129,7 +129,12 @@ public class AdmiSismos {
         }
         return cant;
     }
-    
+    /**
+     * Retorna un arraylist de sismos que se encuentren entre dos fechas indicadas
+     * @param fechaIni la fecha inicial de donde se quieren los sismos
+     * @param fechaFin la fecha final del periodo de tiempo de donde se quieren extraer los sismos
+     * @return arraylist de sismos filtrados
+     */
     public ArrayList<Sismo> consultarSismos(Calendar fechaIni, Calendar fechaFin){
         ArrayList<Sismo> sismosConultados = new ArrayList();
         for (Sismo sismo : allSismos){
@@ -140,7 +145,12 @@ public class AdmiSismos {
         }
         return sismosConultados;
     }
-    
+    /**
+     * Retorna la cantidad de sismos de un mes especifico y un año especifico
+     * @param mes el mes del que se desean los sismos
+     * @param annio el año de donde se desean los sismos
+     * @return int: cantidad de sismos filtrados
+     */
     public int consultarSismos(int mes, int annio){
         int cant = 0;
         for (Sismo sismo : allSismos){
@@ -150,7 +160,11 @@ public class AdmiSismos {
         }
         return cant;
     }
-    
+    /**
+     * Retorna un arraylist de sismos filtrados por su magnitud
+     * @param index el index de un CBO segun las opciones que se muestran al usuario
+     * @return arraylist de sismos filtrados
+     */
     public ArrayList<Sismo> consultarSismos(int index){
         
         ArrayList<Sismo> sismosConsultados = new ArrayList();
@@ -193,6 +207,11 @@ public class AdmiSismos {
         return sismosConsultados;
     }
     
+    /**
+     * devuelve un boolean dependiendo de si encuentra en algun sismo el año especificado
+     * @param annio el año que se desea comprobar si existe en algún sismo con el año
+     * @return true: en caso de encontrar una coincidencia, false: en caso de encontrar niguna coincidencia
+     */
     public boolean comprobar(int annio){
         for (Sismo sismo : allSismos){
             if(sismo.getFecha().get(Calendar.YEAR)==annio){
@@ -206,7 +225,10 @@ public class AdmiSismos {
     public String toString() {
         return "AdmiSismos{" + "allSismos=" + allSismos + '}';
     }
-    
+    /**
+     * retorna un arraylist de todos los sismos registrados
+     * @return arralist de sismos
+     */
     public ArrayList<Sismo> getAllSismos() {
         return allSismos;
     }

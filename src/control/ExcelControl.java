@@ -25,9 +25,14 @@ import modelo.TOrigen;
  */
 public class ExcelControl {
 
-    Workbook book;
-    File archivo;
-
+    private Workbook book;
+    private File archivo;
+    
+    /**
+     * Se encarga de recorrer el archivo excel validando el formato, datos, y columnas de la tabla para obtener los datos de cada sismo
+     * @param sismos es el administrador con los metodos relacionados a todos los sismos
+     * @return true: en caso de leer con exito los datos sin errores, false: en caso contrario
+     */
     public boolean obtenerDatosExel(AdmiSismos sismos) {
         
         Calendar fecha = Calendar.getInstance(), hora = Calendar.getInstance();
@@ -125,7 +130,11 @@ public class ExcelControl {
 
         return true;
     }
-    
+    /**
+     * Se encarga de recorrer el archivo excel validando el formato, datos, y columnas de la tabla para obtener los datos de cada asociado
+     * @param adminAsociados es el administrador con los metodos relacionados a todos los asociados
+     * @return en caso de leer con exito los datos sin errores, false: en caso contrario
+     */
     public boolean obtenerDatosExel(AdmiAsociados adminAsociados) {       
                
         ArrayList<NProvincia> provincias = new ArrayList();
@@ -191,6 +200,11 @@ public class ExcelControl {
 
         return true;
     }
+    /**
+     * retorna un arraylist de NProvincia del asociado
+     * @param provinciasString es el string de las provincias en las que el asociado esta interesado
+     * @return el arrayslist generado del string con las provincias
+     */
     public ArrayList<NProvincia> obtenerProvinciasAsociadas(String provinciasString){
         ArrayList<NProvincia> provincias = new ArrayList();
         for ( String i: provinciasString.split(",")) {
@@ -198,6 +212,11 @@ public class ExcelControl {
         }
         return provincias;
     }
+    /**
+     * se encarga de obtener la magnitud de un sismo sin la unidad
+     * @param magnitud el string de magnitud guardado en el excel
+     * @return el string de la magnitud sin la unidad
+     */
     public String maginitudSinUnidad(String magnitud) {
         String magnitudSinUnidad = "";
         for (int i = 0; i < magnitud.length() - 2; i++) {
@@ -206,6 +225,11 @@ public class ExcelControl {
         return magnitudSinUnidad;
     }
 
+    /**
+     * se encarga de guardar los datos que ya han sido editados en el mismo arhivo excel
+     * @param tabla la tabla que contiene los datos editados
+     * @return true: en caso de guardar los datos sin problemas, false: en caso de no poder guardarlos
+     */
     public boolean guardarDatosExel(JTable tabla) {
         archivo = new File("src\\files\\sismos.xlsx");
         int NumeroFila = tabla.getRowCount(), NumeroColumna = tabla.getColumnCount();

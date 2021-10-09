@@ -189,10 +189,13 @@ public class Controlador {
      * método del controlador guardar los datos en exel
      * @param table JTable con los datos que se quieren guardar
      */
-    public void guarDatos(JTable table) {
+    public void guardarDatos(JTable table) {
         execelControl.guardarDatosExel(table);
     }
-    
+    /**
+     * se encarga de enviar los correos electronicos a todos los asociados interesados en algun sismo que haya sido agregado segun su provincia
+     * @param sismo el sismo del que los asociados seran notificados
+     */
     public void enviar(Sismo sismo){
         for (Asociado i:adminA.getAllAsociados()) {
             if(!i.getCorreo().equals("")){        
@@ -207,31 +210,59 @@ public class Controlador {
         }
        
     }
-    
+    /**
+     * Se encarga de ejecutar el metodo que carga a los asociados desde el excel
+     */
     public void obtenerAsociados(){
         execelControl.obtenerDatosExel(adminA);
     }
-    
+    /**
+     * Retorna la cantidad de sismos registrados en un provincia especifica
+     * @param provincia es la provincia en la que se desea contar los sismos
+     * @return un int de cantidad de sismos filtrados
+     */
     public int consultarSismosProvincia(NProvincia provincia){
         return adminS.consultarSismos(provincia);
     }
-    
+    /**
+     * Retorna la cantidad de sismos con un tipo de origen especifico
+     * @param origen es el origen de los sismos que se quiere contar
+     * @return un int de cantidad de sismos filtrados
+     */
     public int consultarSismosOrigen(TOrigen origen){
         return adminS.consultarSismos(origen);
     }
-    
+    /**
+     * Retorna un arraylist de sismos que se encuentren entre dos fechas indicadas
+     * @param fechaIni la fecha inicial de donde se quieren los sismos
+     * @param fechaFin la fecha final del periodo de tiempo de donde se quieren extraer los sismos
+     * @return arraylist de sismos filtrados
+     */
     public ArrayList<Sismo> consultarSismosRangoFecha(Calendar fechaIni, Calendar fechaFin){
         return adminS.consultarSismos(fechaIni, fechaFin);
     }
-    
+    /**
+     * Retorna la cantidad de sismos de un mes especifico y un año especifico
+     * @param mes el mes del que se desean los sismos
+     * @param annio el año de donde se desean los sismos
+     * @return int: cantidad de sismos filtrados
+     */
     public int consultarSismosMes(int mes, int annio){
         return adminS.consultarSismos(mes, annio);
     }
-    
+    /**
+     * Retorna un arraylist de sismos filtrados por su magnitud
+     * @param index el index de un CBO segun las opciones que se muestran al usuario
+     * @return arraylist de sismos filtrados
+     */
     public ArrayList<Sismo> consultarSismosMagnitud( int index){
         return adminS.consultarSismos(index);
     }
-    
+    /**
+     * devuelve un boolean dependiendo de si encuentra en algun sismo el año especificado
+     * @param annio el año que se desea comprobar si existe en algún sismo con el año
+     * @return true: en caso de encontrar una coincidencia, false: en caso de encontrar niguna coincidencia
+     */
     public boolean comprobarAnnio(int annio){
         return adminS.comprobar(annio);
     }

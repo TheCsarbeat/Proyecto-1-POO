@@ -7,19 +7,7 @@ package vista;
 
 import control.Controlador;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -357,7 +345,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnTipoOrigen.setForeground(blanco);
     }//GEN-LAST:event_btnTipoOrigenMouseExited
-
+    /**
+     * se encarga de desplegar un panel con los botones a los diferentes graficos
+     * @param evt el click
+     */
     private void btnConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultasMouseClicked
 
         int altura = panelConsulta.getHeight();

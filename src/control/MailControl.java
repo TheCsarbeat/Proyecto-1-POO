@@ -27,7 +27,12 @@ public class MailControl {
     public MailControl(){
         
     }
-    
+    /**
+     * se encarga de enviar el correo electronico sobre un sismo al asociado interesado
+     * @param sismo el sismo al que se le va a notificar al asociado
+     * @param nombre el nombre del asociado
+     * @param destinatario el correo del asociado
+     */
     public void sendEmail(Sismo sismo, String nombre, String destinatario ){
         System.out.println("Preparing ");
         Properties properties = new Properties();
@@ -54,7 +59,15 @@ public class MailControl {
         } 
         
     }
-    
+    /**
+     * construye el mensaje que estará escrito en el correo electronico que se le enviara al asociado
+     * @param session la sesion del correo
+     * @param email el correo electronico
+     * @param recepient el recipiente del mensaje preparado
+     * @param sismo el sismo al que se le va a notificar al asociado
+     * @param nombre el nombre del asociado
+     * @return retorna el mensaje del correo preparado
+     */
     private static Message prepareMessage(Session session, String email, String recepient, Sismo sismo, String nombre){
         try{
             Message message = new MimeMessage(session);

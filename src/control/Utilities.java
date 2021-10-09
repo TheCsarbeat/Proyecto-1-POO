@@ -282,15 +282,27 @@ public class Utilities {
         }
          return false;
     }
-    
+    /**
+     * retorna un boolean dependiendo de si el numero de telefono cumple con el formato
+     * @param numeroCelular el numero de celular del asociado a validar
+     * @return true: en caso de cumplir el formato, false: en caso de no cumplir el formato
+     */
     public static boolean validarNumeroCelular(String numeroCelular){
         return Pattern.matches("\\d{4}-\\d{4}", numeroCelular) ;
     }
-    
+    /**
+     * retorna un boolean dependiendo de si el coirreo cumple con el formato
+     * @param correo el correo del asociado a validar
+     * @return true: en caso de cumplir el formato, false: en caso de no cumplir el formato
+     */
     public static boolean validarCorreo(String correo){
         return Pattern.matches("([\\w-\\.]+)@((?:\\w+\\.)+)([a-zA-Z]{2,4})", correo) ; //"[\\w.%+-]+{4}[-]([a-zA-Z]{2,4})"
     }
-    
+    /**
+     * valida provincias
+     * @param provincias las provincias
+     * @return true: si cumple el formato, false: si no cumple el formato
+     */
     public static boolean validarProvincias(ArrayList<NProvincia> provincias){
         int contador =0 ; 
         for(NProvincia i: provincias){

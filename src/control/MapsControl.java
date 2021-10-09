@@ -12,11 +12,7 @@ import com.teamdev.jxbrowser.engine.Engine;
 import com.teamdev.jxbrowser.engine.EngineOptions;
 import com.teamdev.jxbrowser.view.swing.BrowserView;
 
-import java.awt.BorderLayout;
 import java.io.*;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -43,12 +39,19 @@ public class MapsControl {
         this.browser = this.engine.newBrowser();
         this.view = BrowserView.newInstance(browser);
     }
-
+    /**
+     * lee el archivo HTML y guarda una copia editable
+     * @throws IOException en caso de que al convertir el documento este no puede ser convertido
+     */
     public void leer() throws IOException {
         File input = new File(url);
         this.doc = Jsoup.parse(input, "UTF-8");
     }
-
+    /**
+     * se encarga de modificar la copia editable del archivo HTML basado en las coordenadas ingresadas
+     * @param latitud la latidud de la localizacion
+     * @param longitud la longitud de la localizacion 
+     */
     public void modificar(double latitud, double longitud) {
         Element script = doc.getElementById("code");
         script.html("\n        var latitud = " + latitud + ";\n"
@@ -67,7 +70,7 @@ public class MapsControl {
     }
 
     /**
-     * cualquier object
+     * se encarga de sobrescribir el archivo HTML con la copia ya editada
      */
     public void escribir() {
         File fnew = new File(url);
@@ -82,7 +85,9 @@ public class MapsControl {
             e.printStackTrace();
         }
     }
-
+    /**
+     * se encarga de abrir el HTML atraves del browser
+     */
     public void open() {
         browser.navigation().loadUrl(url);
     }

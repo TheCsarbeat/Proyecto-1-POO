@@ -16,7 +16,6 @@ import java.awt.BorderLayout;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.MessagingException;
 import javax.swing.JFrame;
 import javax.swing.table.TableModel;
 
@@ -667,7 +666,7 @@ public class PanelSismos extends javax.swing.JPanel {
                 if (respuesta) {
                     cargarTabla();
                     JOptionPane.showMessageDialog(null, "El sismo se ha registrado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
-                    VentanaPrincipal.controlador.guarDatos(tableSismos);
+                    VentanaPrincipal.controlador.guardarDatos(tableSismos);
                     limpiarCampos();
                 }else{
                     JOptionPane.showMessageDialog(null, "Ya existe un sismo con estos datos", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -713,7 +712,7 @@ public class PanelSismos extends javax.swing.JPanel {
                     cargarTabla();
                     JOptionPane.showMessageDialog(null, "El sismo se ha modificado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
                     limpiarCampos();
-                    VentanaPrincipal.controlador.guarDatos(tableSismos);
+                    VentanaPrincipal.controlador.guardarDatos(tableSismos);
                 }else{
                     JOptionPane.showMessageDialog(null, "No ha realizado nigún cambio al sismo", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -744,7 +743,7 @@ public class PanelSismos extends javax.swing.JPanel {
             VentanaPrincipal.controlador.eliminarSismo(Integer.parseInt(lbID.getText()));
             JOptionPane.showMessageDialog(null, "El sismo se ha eliminado correctamente", "Éxito!", JOptionPane.INFORMATION_MESSAGE);
             cargarTabla();
-            VentanaPrincipal.controlador.guarDatos(tableSismos);
+            VentanaPrincipal.controlador.guardarDatos(tableSismos);
             limpiarCampos();
         }
     }        
@@ -775,6 +774,9 @@ public class PanelSismos extends javax.swing.JPanel {
     // -----------------field methods----------
     
     // get data of the fields
+    /**
+     * se encarga de obtener los datos de cada uno de los objetos de donde el usuario puede ingresar los datos
+     */
     private void obtenerDatos(){
         fechaSismo = dateFechaSismo.getCalendar();
         hora.setTime((Date) timeHoraSismo.getValue());
@@ -816,6 +818,9 @@ public class PanelSismos extends javax.swing.JPanel {
         }
 
     }
+    /**
+     * se encarga de limpiar los objetos donde el usuario ingresa los datos
+     */
     public void limpiarCampos() {
         lbID.setText("");
         dateFechaSismo.setDate(null);
@@ -840,6 +845,7 @@ public class PanelSismos extends javax.swing.JPanel {
         tableSismos.setSelectionMode(0);
     }
 
+    
     public void cargarCampos(Sismo s) {
         lbID.setVisible(false);
         lbID.setText(String.valueOf(s.getId()));

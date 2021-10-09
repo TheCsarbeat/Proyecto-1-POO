@@ -7,17 +7,12 @@ package vista;
 
 import java.awt.Color;
 import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Sismo;
-import control.Utilities;
-import java.awt.BorderLayout;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
 import javax.swing.JFrame;
-import javax.swing.table.TableModel;
 
 /**
  *

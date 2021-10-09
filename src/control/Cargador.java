@@ -5,20 +5,19 @@
  */
 package control;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
-import modelo.NProvincia;
 import modelo.Sismo;
-import modelo.TOrigen;
 /**
  *
  * @author erksm
  */
 public class Cargador {
-    
+    /**
+     * se encarga se cargar todos los sismos registrados en el arraylist del total de sismos en la tabla del PanelSismos
+     * @param array recibe un arraylist de todos los sismos registrados
+     * @return DefaultTableModel es el modelo de la tabla con todos los datos cargados 
+     */
     public static DefaultTableModel cargarSismos(ArrayList<Sismo> array){
         Object [] encabezado = {"Id", "Fecha", "Hora", "Profundidad KM", "Magnitud", "Localizacion", "Origen de Falla", "Latitud", "Longitud", "Provincia", "Lugar"};
         DefaultTableModel dtm = new DefaultTableModel(encabezado, array.size());
