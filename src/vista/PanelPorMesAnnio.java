@@ -11,6 +11,8 @@ import modelo.NProvincia;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -74,15 +76,14 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
                 lbMenuChartsMouseExited(evt);
             }
         });
-        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
         contentPanelCharts.setBackground(new java.awt.Color(255, 255, 255));
         contentPanelCharts.setLayout(new java.awt.CardLayout());
         add(contentPanelCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 1070, 590));
 
         annioChooser.setBackground(new java.awt.Color(153, 153, 153));
-        annioChooser.setForeground(new java.awt.Color(255, 255, 255));
-        annioChooser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        annioChooser.setForeground(new java.awt.Color(0, 0, 0));
         add(annioChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 40));
 
         lbFechaSismo.setBackground(new java.awt.Color(0, 0, 0));
@@ -125,7 +126,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(panelConsultarSismosAnnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 110, 230, -1));
+        add(panelConsultarSismosAnnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbMenuChartsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseClicked
@@ -151,10 +152,15 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
             createDataset(),          
             PlotOrientation.VERTICAL,           
             true, true, false);
+            CategoryPlot plot = (CategoryPlot) barChart.getPlot();
+            NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+            rangeAxis.setRange(0, 50);
             ChartPanel chartPanel = new ChartPanel( barChart );
             cargarPanelCharts(chartPanel);
         }else{
             JOptionPane.showMessageDialog(null, "No se encuentran sismos registrados en este año", "Error", JOptionPane.ERROR_MESSAGE);
+            PanelSeleccioneOtroAnnio panelSugerencia = new PanelSeleccioneOtroAnnio();
+            cargarPanelCharts(panelSugerencia);
             //Agregar de alguna forma lo del mensaje "Intenta con otro año" y algún ícono. Además arreglar el diseño que todo está horrible
         }
     }//GEN-LAST:event_btnConsultarMouseClicked

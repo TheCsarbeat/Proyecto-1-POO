@@ -70,7 +70,7 @@ public class PanelPorOrigen extends javax.swing.JPanel {
                 lbMenuChartsMouseExited(evt);
             }
         });
-        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         contentPanelCharts.setLayout(new java.awt.CardLayout());
         add(contentPanelCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 1070, 590));

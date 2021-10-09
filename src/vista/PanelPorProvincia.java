@@ -27,8 +27,8 @@ public class PanelPorProvincia extends javax.swing.JPanel {
         initComponents();
         JFreeChart barChart = ChartFactory.createBarChart(
          "Histograma",           
-         "Cantidad",            
          "Provincias",            
+         "Cantidad",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);
@@ -78,7 +78,7 @@ public class PanelPorProvincia extends javax.swing.JPanel {
                 lbMenuChartsMouseExited(evt);
             }
         });
-        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
+        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbMenuChartsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseClicked
