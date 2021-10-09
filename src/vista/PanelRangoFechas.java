@@ -40,7 +40,8 @@ public class PanelRangoFechas extends javax.swing.JPanel {
 
     public PanelRangoFechas() {
         initComponents();
-
+        ArrayList<Sismo> sismos = new ArrayList();
+        cargarTabla(sismos);
     }
 
     /**
@@ -114,7 +115,7 @@ public class PanelRangoFechas extends javax.swing.JPanel {
         btnAgregar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa-de-busqueda.png"))); // NOI18N
         btnAgregar.setText("Consultar");
         btnAgregar.setIconTextGap(20);
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -184,12 +185,10 @@ public class PanelRangoFechas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Rango de fechas no es correcto!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
                 ArrayList<Sismo> sismos = VentanaPrincipal.controlador.consultarSismosRangoFecha(fechaInicial, fechaFinal);
-            if (!sismos.isEmpty()) {
-                cargarTabla(sismos);
-                
-            }else{
-                JOptionPane.showMessageDialog(null, "No se han encontrado dato", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
+             if (sismos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se han encontrado dato", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
             }
+            cargarTabla(sismos);
         }
         
     }

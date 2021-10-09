@@ -200,7 +200,7 @@ public class PanelSismos extends javax.swing.JPanel {
         lbSismos1.setForeground(new java.awt.Color(0, 0, 0));
         lbSismos1.setText("Provincia");
         lbSismos1.setToolTipText("");
-        add(lbSismos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 130, 50));
+        add(lbSismos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 130, 50));
 
         lbSismos2.setBackground(new java.awt.Color(0, 0, 0));
         lbSismos2.setFont(new java.awt.Font("Roboto Slab Light", 1, 14)); // NOI18N
@@ -340,8 +340,6 @@ public class PanelSismos extends javax.swing.JPanel {
         });
         tableSismos.setOpaque(false);
         tableSismos.setSelectionBackground(new java.awt.Color(50, 200, 186));
-        tableSismos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tableSismos.setShowGrid(true);
         tableSismos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tableSismosMousePressed(evt);

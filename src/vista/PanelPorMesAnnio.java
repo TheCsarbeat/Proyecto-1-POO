@@ -83,7 +83,6 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         add(contentPanelCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 1070, 590));
 
         annioChooser.setBackground(new java.awt.Color(153, 153, 153));
-        annioChooser.setForeground(new java.awt.Color(0, 0, 0));
         add(annioChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 40));
 
         lbFechaSismo.setBackground(new java.awt.Color(0, 0, 0));
@@ -99,7 +98,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         btnConsultar.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa-de-busqueda.png"))); // NOI18N
         btnConsultar.setText("Consultar");
         btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,7 +116,9 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         panelConsultarSismosAnnio.setLayout(panelConsultarSismosAnnioLayout);
         panelConsultarSismosAnnioLayout.setHorizontalGroup(
             panelConsultarSismosAnnioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnConsultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConsultarSismosAnnioLayout.createSequentialGroup()
+                .addGap(0, 23, Short.MAX_VALUE)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelConsultarSismosAnnioLayout.setVerticalGroup(
             panelConsultarSismosAnnioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +159,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
             ChartPanel chartPanel = new ChartPanel( barChart );
             cargarPanelCharts(chartPanel);
         }else{
-            JOptionPane.showMessageDialog(null, "No se encuentran sismos registrados en este año", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se encuentran sismo en este año", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
             PanelSeleccioneOtroAnnio panelSugerencia = new PanelSeleccioneOtroAnnio();
             cargarPanelCharts(panelSugerencia);
             //Agregar de alguna forma lo del mensaje "Intenta con otro año" y algún ícono. Además arreglar el diseño que todo está horrible
@@ -167,10 +168,12 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
 
     private void btnConsultarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseEntered
         // TODO add your handling code here:
+        panelConsultarSismosAnnio.setBackground(VentanaPrincipal.overedColor);
     }//GEN-LAST:event_btnConsultarMouseEntered
 
     private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
         // TODO add your handling code here:
+        panelConsultarSismosAnnio.setBackground(VentanaPrincipal.normalColor);
     }//GEN-LAST:event_btnConsultarMouseExited
 
     private CategoryDataset createDataset( ) {
