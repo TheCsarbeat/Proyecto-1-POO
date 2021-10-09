@@ -198,6 +198,9 @@ public class PanelRangoFechas extends javax.swing.JPanel {
     // -----------------field methods----------
     
     // get data of the fields
+    /**
+     * se encarga de obtener los datos de los objetos donde el usuario ingrese datos
+     */
     private void obtenerDatos(){
         fechaInicial = dateFechaInicial.getCalendar();
         fechaFinal = dateFechaFinal.getCalendar();
@@ -205,6 +208,10 @@ public class PanelRangoFechas extends javax.swing.JPanel {
     
     
     // tabla
+    /**
+     * carga la tabla con un arraylist de sismos
+     * @param sismos el arraylist con los sismos a cargar
+     */
     public void cargarTabla(ArrayList<Sismo> sismos) {
        
         tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos(sismos));

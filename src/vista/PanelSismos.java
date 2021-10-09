@@ -339,6 +339,9 @@ public class PanelSismos extends javax.swing.JPanel {
         });
         tableSismos.setOpaque(false);
         tableSismos.setSelectionBackground(new java.awt.Color(50, 200, 186));
+        tableSismos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableSismos.setShowHorizontalLines(true);
+        tableSismos.setShowVerticalLines(true);
         tableSismos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tableSismosMousePressed(evt);
@@ -845,7 +848,10 @@ public class PanelSismos extends javax.swing.JPanel {
         tableSismos.setSelectionMode(0);
     }
 
-    
+    /**
+     * se encarga de cargar los campos en la tabla
+     * @param s un objeto sismo
+     */
     public void cargarCampos(Sismo s) {
         lbID.setVisible(false);
         lbID.setText(String.valueOf(s.getId()));
@@ -882,6 +888,9 @@ public class PanelSismos extends javax.swing.JPanel {
     }
     
     // tabla
+    /**
+     * carga sismos a la tabla
+     */
     public void cargarTabla() {
        
         tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos());
@@ -889,6 +898,12 @@ public class PanelSismos extends javax.swing.JPanel {
     }
     
     // mapa
+    /**
+     * se encarga de abrir el mapa desde la ventana principal
+     * @param latitud la latitud de la coordenada
+     * @param longitud la longitud de la coordenada
+     * @throws IOException en caso de que al abrir el mapa se produzca un error
+     */
     private void abrirMapa(double latitud, double longitud) throws IOException {
         VentanaPrincipal.controlador.leerHTML();
         VentanaPrincipal.controlador.modificarHTML(latitud, longitud);

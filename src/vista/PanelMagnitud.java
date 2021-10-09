@@ -6,18 +6,9 @@
 package vista;
 
 import java.awt.Color;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Sismo;
-import control.Utilities;
-import java.awt.BorderLayout;
-import java.io.IOException;
 import java.util.ArrayList;
-
-
-import javax.swing.JFrame;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -30,8 +21,6 @@ public class PanelMagnitud extends javax.swing.JPanel {
      */
 
     //Varaibles declaration
-    private double magnitudInicial = 0;
-    private double magnitudFinal = 0;
     private int index = -1;
     public PanelMagnitud() {
         initComponents();
@@ -179,12 +168,19 @@ public class PanelMagnitud extends javax.swing.JPanel {
     // -----------------field methods----------
     
     // get data of the fields
+    /**
+     * obtiene los datos de los objetos donde el usuario ingresa los datos
+     */
     private void obtenerDatos(){
         index = cboMagnitud.getSelectedIndex();
     }
     
     
     // tabla
+    /**
+     * carga sismos a la tabla
+     * @param sismos un arraylist con los sismos a cargar
+     */
     public void cargarTabla(ArrayList<Sismo> sismos) {
        
         tableSismos.setModel(VentanaPrincipal.controlador.cargarSismos(sismos));

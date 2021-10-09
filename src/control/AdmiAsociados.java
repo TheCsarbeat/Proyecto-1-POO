@@ -22,7 +22,7 @@ public class AdmiAsociados {
     
     /**
      * Agrega un asociado al registro controlando los repetidos
-     * @param s
+     * @param a el asociado a agregar
      * @return true: lo agrego, false: no se agrego
      */
     public boolean agregar(Asociado a){
@@ -37,7 +37,7 @@ public class AdmiAsociados {
     
     /**
      * Busca un entre los asociados bajo el id y lo retorna si lo encuentra
-     * @param num
+     * @param id el asociado a consultar
      * @return sismo: el objeto sismo si lo encuentra, null: si no encuentra una coincidencia
      */
     public Asociado consultar(int id){  
@@ -50,7 +50,7 @@ public class AdmiAsociados {
     
     /**
      * Busca un asociado bajo el id y lo sobreescribe con el nuevo sismo que tiene nuevos valores
-     * @param nuevosDatos
+     * @param nuevosDatos el asociado con los nuevos datos
      * @return true: en caso de encontrar el asociado y cambiar los datos, false:  en caso de no encontrar el asociado
      */
     public boolean modificar(Asociado nuevosDatos){
@@ -66,7 +66,7 @@ public class AdmiAsociados {
     
     /**
      * busca un asociado por id y si lo encuentra lo elimina del array
-     * @param num
+     * @param id el id del asociado para ser eliminado
      * @return true: si existe un match y se elimina, false: si no se encuentran coincidencias
      */
     public boolean eliminar(int id){    
@@ -84,10 +84,18 @@ public class AdmiAsociados {
         return "AdmiAsociados{" + "allAsociados=" + allAsociados + '}';
     }
     
+    /**
+     * retorna un arraylist con todos los asociados registrados
+     * @return 
+     */
     public ArrayList<Asociado> getAllAsociados() {
         return allAsociados;
     }
 
+    /**
+     * Retorna la cantidad de asociados registrados
+     * @return 
+     */
     public int getContador() {
         return contador;
     }

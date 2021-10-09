@@ -28,18 +28,26 @@ public class PanelSeleccioneOtroAnnio extends javax.swing.JPanel {
     private void initComponents() {
 
         lblRecomendation = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblRecomendation.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblRecomendation.setForeground(new java.awt.Color(0, 0, 0));
-        lblRecomendation.setText("Intente con otro año :D");
-        add(lblRecomendation, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 420, 60));
+        lblRecomendation.setText("Intente con otro año");
+        add(lblRecomendation, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 370, 60));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/error.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 260, 280));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblRecomendation;
     // End of variables declaration//GEN-END:variables
 }

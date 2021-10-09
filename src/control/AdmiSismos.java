@@ -25,7 +25,7 @@ public class AdmiSismos {
     
     /**
      * Agrega un sismo al registro controlando los repetidos
-     * @param s
+     * @param s el sismo a agregar
      * @return true: lo agrego, false: no se agrego
      */
     public boolean agregar(Sismo s){
@@ -40,12 +40,12 @@ public class AdmiSismos {
     
     /**
      * Busca un entre los sismos bajo el id y lo retorna si lo encuentra
-     * @param num
+     * @param id el id del sismo a consultar
      * @return sismo: el objeto sismo si lo encuentra, null: si no encuentra una coincidencia
      */
-    public Sismo consultar(int num){  
+    public Sismo consultar(int id){  
         for (Sismo sismo : allSismos) {
-            if (sismo.getId() == num)
+            if (sismo.getId() == id)
                 return sismo;
         }
         return null;
@@ -65,7 +65,7 @@ public class AdmiSismos {
     
     /**
      * Busca un sismo bajo el id y lo sobreescribe con el nuevo sismo que tiene nuevos valores
-     * @param nuevosDatos
+     * @param nuevosDatos el sismo con los nuevos datos para modificar
      * @return true: en caso de encontrar el sismo y cambiar los datos, false:  en caso de no encontrar el sismo
      */
     public boolean modificar(Sismo nuevosDatos){
@@ -81,13 +81,13 @@ public class AdmiSismos {
     
     /**
      * busca un sismo por id y si lo encuentra lo elimina del array
-     * @param num
+     * @param id el id del sismo a eliminar
      * @return true: si existe un match y se elimina, false: si no se encuentran coincidencias
      */
-    public boolean eliminar(int num){    
+    public boolean eliminar(int id){    
         for (int i = 0; i < allSismos.size(); i++) {
             Sismo actual = allSismos.get(i);
-            if (actual.getId()== num){
+            if (actual.getId()== id){
                 allSismos.remove(i);
                 return true;            }
         }             

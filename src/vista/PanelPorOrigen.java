@@ -32,7 +32,11 @@ public class PanelPorOrigen extends javax.swing.JPanel {
         ChartPanel chartPanel = new ChartPanel(chart);
         cargarPanelCharts(chartPanel);
     }
-
+    
+    /**
+     * carga un panel que contiene un grafico
+     * @param panel 
+     */
     private void cargarPanelCharts(JPanel panel) {
         contentPanelCharts.removeAll();
         contentPanelCharts.add(panel);
@@ -88,6 +92,10 @@ public class PanelPorOrigen extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_lbMenuChartsMouseExited
 
+    /**
+     * crea un contenedor con los datos que tendra el grafico
+     * @return retorna el contenedor
+     */
     private static PieDataset createDataset( ) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       dataset.setValue( "Subducción" , VentanaPrincipal.controlador.consultarSismosOrigen(TOrigen.SUBDUCCION) );  

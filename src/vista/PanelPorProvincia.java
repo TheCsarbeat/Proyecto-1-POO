@@ -35,7 +35,10 @@ public class PanelPorProvincia extends javax.swing.JPanel {
         ChartPanel chartPanel = new ChartPanel( barChart );
         cargarPanelCharts(chartPanel);
     }
-    
+    /**
+     * carga un panel que contiene un grafico
+     * @param panel 
+     */
     private void cargarPanelCharts(JPanel panel) {
         contentPanelCharts.removeAll();
         contentPanelCharts.add(panel);
@@ -92,7 +95,11 @@ public class PanelPorProvincia extends javax.swing.JPanel {
     private void lbMenuChartsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_lbMenuChartsMouseExited
-
+    
+    /**
+     * crea un contenedor con los datos que tendra el grafico
+     * @return retorna el contenedor
+     */
     private CategoryDataset createDataset( ) {
       final String sanjose = "San Jose";        
       final String cartago = "Cartago";        

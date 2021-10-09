@@ -24,14 +24,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Color overedColor = new Color(50, 200, 186);
     public static Color normalColor = new Color(0, 150, 136);
     public static Color blanco = new Color(255,255,255);
+    
+    private  PanelMagnitud panelMagnitud;
+    private  PanelPorMesAnnio panelPorMesAnnio;
+    private  PanelPorOrigen panelPorOrigen;
+    private  PanelPorProvincia panelPorProvincia;
+    private  PanelRangoFechas panelRangoFechas;
+    private  PanelSismos panelSismos;
 
 
     public VentanaPrincipal() {        
         initComponents();
         controlador.obtenerDatosArchivoExel();
         controlador.obtenerAsociados();
+        panelMagnitud = new PanelMagnitud();
+        panelPorMesAnnio = new PanelPorMesAnnio();
+        panelPorOrigen = new PanelPorOrigen();
+        panelPorProvincia = new PanelPorProvincia();
+        panelRangoFechas = new PanelRangoFechas();
+        panelSismos = new PanelSismos();
     }
-
+    /**
+     * carga un panel en la ventana principal
+     * @param panel 
+     */
     public void cargarPanel(JPanel panel) {
         contentPanel.removeAll();
         contentPanel.add(panel);
@@ -349,8 +365,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
         btnConsultas.setIcon(imageIcon);
-        PanelPorOrigen panel = new PanelPorOrigen();
-        cargarPanel(panel);
+        cargarPanel(panelPorOrigen);
     }//GEN-LAST:event_btnTipoOrigenMouseClicked
 
     private void btnTipoOrigenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTipoOrigenMouseEntered
@@ -420,8 +435,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
         btnConsultas.setIcon(imageIcon);
-        PanelPorProvincia panel = new PanelPorProvincia();
-        cargarPanel(panel);
+        cargarPanel(panelPorProvincia);
     }//GEN-LAST:event_btnProvinciasMouseClicked
 
     private void btnProvinciasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvinciasMouseEntered
@@ -438,8 +452,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
         btnConsultas.setIcon(imageIcon);
-        PanelMagnitud panel = new PanelMagnitud();
-        cargarPanel(panel);
+        cargarPanel(panelMagnitud);
 
     }//GEN-LAST:event_btnMagnitudMouseClicked
 
@@ -458,8 +471,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
         btnConsultas.setIcon(imageIcon);
-        PanelRangoFechas panel = new PanelRangoFechas();
-        cargarPanel(panel);
+        cargarPanel(panelRangoFechas);
     }//GEN-LAST:event_btnRangoFechasMouseClicked
 
     private void btnRangoFechasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRangoFechasMouseEntered
@@ -476,8 +488,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
         btnConsultas.setIcon(imageIcon);
-        PanelPorMesAnnio panel = new PanelPorMesAnnio();
-        cargarPanel(panel);
+        cargarPanel(panelPorMesAnnio);
     }//GEN-LAST:event_btnMesPorYearMouseClicked
 
     private void btnMesPorYearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesPorYearMouseEntered

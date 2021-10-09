@@ -60,6 +60,7 @@ public class Controlador {
     
     /**
      * método del controlador modificar un sismo al adminSismos
+     * @param id el id del sismo a modificar
      * @param fecha la fecha del sismo a agregar
      * @param hora  la hora del sismo a agregar
      * @param profundidad la profundidad del sismo
@@ -114,7 +115,6 @@ public class Controlador {
     }
     /**
      * método del contralor para agregar un asociado
-     * @param id valor entero que identifica el asociado
      * @param name nombre del asociado
      * @param correo el correo que usa el asociado
      * @param celular   texto con el número de celular del asociado
@@ -173,15 +173,25 @@ public class Controlador {
     public void modificarHTML(double latitud, double longitud) {
         mapControl.modificar(latitud, longitud);
     }
-
+    
+    /**
+     * se encarga de escribir el archivo HTML guardado
+     */
     public void escribirHTML() {
         mapControl.escribir();
     }
-
+    
+    /**
+     * retorna el controlador de los mapas
+     * @return 
+     */
     public MapsControl getMapsControl() {
         return mapControl;
     }
 
+    /**
+     * se encarga de abrir el archivo HTML guardado
+     */
     public void openMaps() {
         mapControl.open();
     }

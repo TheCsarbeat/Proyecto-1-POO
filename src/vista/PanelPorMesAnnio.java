@@ -30,6 +30,10 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         initComponents();
         this.annio = 0;
     }
+    /**
+     * carga un panel que contiene un grafico
+     * @param panel 
+     */
     private void cargarPanelCharts(JPanel panel) {
         contentPanelCharts.removeAll();
         contentPanelCharts.add(panel);
@@ -175,6 +179,10 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         panelConsultarSismosAnnio.setBackground(VentanaPrincipal.normalColor);
     }//GEN-LAST:event_btnConsultarMouseExited
 
+    /**
+     * crea un contenedor con los datos que tendra el grafico
+     * @return retorna el contenedor
+     */
     private CategoryDataset createDataset( ) {
       final String enero = "Enero";        
       final String febrero = "Febrero";        
