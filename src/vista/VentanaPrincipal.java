@@ -31,6 +31,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private  PanelPorProvincia panelPorProvincia;
     private  PanelRangoFechas panelRangoFechas;
     private  PanelSismos panelSismos;
+    private  PanelAbout panelAbout;
 
 
     public VentanaPrincipal() {        
@@ -43,6 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPorProvincia = new PanelPorProvincia();
         panelRangoFechas = new PanelRangoFechas();
         panelSismos = new PanelSismos();
+        panelAbout = new PanelAbout();
     }
     /**
      * carga un panel en la ventana principal
@@ -94,6 +96,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnMagnitud = new javax.swing.JLabel();
         btnRangoFechas = new javax.swing.JLabel();
         btnMesPorYear = new javax.swing.JLabel();
+        aboutPanel = new javax.swing.JPanel();
+        lbabout = new javax.swing.JLabel();
         topPanel = new javax.swing.JPanel();
         contentPanel = new javax.swing.JPanel();
 
@@ -136,7 +140,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sismosMenuPanel.setLayout(sismosMenuPanelLayout);
         sismosMenuPanelLayout.setHorizontalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbMenuSismos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbMenuSismos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
         sismosMenuPanelLayout.setVerticalGroup(
             sismosMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,6 +310,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuPanel.add(panelConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 0));
 
+        aboutPanel.setBackground(new java.awt.Color(0, 150, 136));
+        aboutPanel.setPreferredSize(new java.awt.Dimension(250, 50));
+
+        lbabout.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
+        lbabout.setForeground(new java.awt.Color(255, 255, 255));
+        lbabout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbabout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/about.png"))); // NOI18N
+        lbabout.setText("About");
+        lbabout.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lbabout.setIconTextGap(35);
+        lbabout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbaboutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbaboutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbaboutMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout aboutPanelLayout = new javax.swing.GroupLayout(aboutPanel);
+        aboutPanel.setLayout(aboutPanelLayout);
+        aboutPanelLayout.setHorizontalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbabout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
+        aboutPanelLayout.setVerticalGroup(
+            aboutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(aboutPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lbabout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        menuPanel.add(aboutPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 780, -1, -1));
+
         backgroundPanel.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 300, 850));
 
         topPanel.setBackground(new java.awt.Color(0, 150, 136));
@@ -346,8 +387,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void lbMenuSismosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuSismosMouseClicked
         // TODO add your handling code here:
-        PanelSismos panel = new PanelSismos();
-        cargarPanel(panel);
+        cargarPanel(panelSismos);
         
     }//GEN-LAST:event_lbMenuSismosMouseClicked
 
@@ -501,6 +541,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnMesPorYear.setForeground(blanco);
     }//GEN-LAST:event_btnMesPorYearMouseExited
 
+    private void lbaboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbaboutMouseClicked
+        // TODO add your handling code here:
+        cargarPanel(panelAbout);
+    }//GEN-LAST:event_lbaboutMouseClicked
+
+    private void lbaboutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbaboutMouseEntered
+        // TODO add your handling code here:
+        aboutPanel.setBackground(overedColor);
+    }//GEN-LAST:event_lbaboutMouseEntered
+
+    private void lbaboutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbaboutMouseExited
+        // TODO add your handling code here:
+        aboutPanel.setBackground(normalColor);
+    }//GEN-LAST:event_lbaboutMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -537,6 +592,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel aboutPanel;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JLabel btnConsultas;
     private javax.swing.JPanel btnConsultasPanel;
@@ -547,6 +603,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnTipoOrigen;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JLabel lbMenuSismos;
+    private javax.swing.JLabel lbabout;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel panelConsulta;
     private javax.swing.JPanel sismosMenuPanel;
