@@ -118,14 +118,15 @@ public class AdmiSismos {
         return cant;
     }
     
-    public int consultarSismos(Calendar fechaIni, Calendar fechaFin){
-        int cant = 0;
+    public ArrayList<Sismo> consultarSismos(Calendar fechaIni, Calendar fechaFin){
+        ArrayList<Sismo> sismosConultados = new ArrayList();
         for (Sismo sismo : allSismos){
-            if(sismo.getFecha().after(fechaIni) && sismo.getFecha().before(fechaFin)){
-                cant++;
+            if( (sismo.getFecha().after(fechaIni) && sismo.getFecha().before(fechaFin)) || 
+                    fechaIni.compareTo(sismo.getFecha()) == 0 || fechaFin.compareTo(sismo.getFecha()) == 0){
+                sismosConultados.add(sismo);
             }
         }
-        return cant;
+        return sismosConultados;
     }
     
     public int consultarSismos(int mes, int annio){
@@ -138,14 +139,46 @@ public class AdmiSismos {
         return cant;
     }
     
-    public int consultarSismos(double magnitud1, double magnitud2){
-        int cant = 0;
+    public ArrayList<Sismo> consultarSismos(int index){
+        
+        ArrayList<Sismo> sismosConsultados = new ArrayList();
+        
         for (Sismo sismo : allSismos){
-            if(sismo.getMagnitud() >= magnitud1 && sismo.getMagnitud() <= magnitud2){
-                cant++;
+            if (index == 0){
+                if (sismo.getMagnitud()< 2){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 1){
+                if (sismo.getMagnitud()>= 2 && sismo.getMagnitud()<4){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 2){
+               if (sismo.getMagnitud()>= 4 && sismo.getMagnitud()<5){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 3){
+                if (sismo.getMagnitud()>= 5 && sismo.getMagnitud()<6){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 4){
+                if (sismo.getMagnitud()>= 6 && sismo.getMagnitud()<7){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 5){
+                if (sismo.getMagnitud()>= 7 && sismo.getMagnitud()<8){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 6){
+                if (sismo.getMagnitud()>= 8 && sismo.getMagnitud()<10){
+                    sismosConsultados.add(sismo);
+                }
+            }else if (index == 7){
+                if (sismo.getMagnitud() >= 10){
+                    sismosConsultados.add(sismo);
+                }
             }
         }
-        return cant;
+        return sismosConsultados;
     }
     
     public boolean comprobar(int annio){

@@ -150,6 +150,10 @@ public class Controlador {
         return Cargador.cargarSismos(adminS.getAllSismos());
     }
     
+    public DefaultTableModel cargarSismos(ArrayList<Sismo> sismos) {
+        return Cargador.cargarSismos(sismos);
+    }
+    
     /**
      * método del controlador para obtener los datos de los sismos
      */
@@ -216,7 +220,7 @@ public class Controlador {
         return adminS.consultarSismos(origen);
     }
     
-    public int consultarSismosRangoFecha(Calendar fechaIni, Calendar fechaFin){
+    public ArrayList<Sismo> consultarSismosRangoFecha(Calendar fechaIni, Calendar fechaFin){
         return adminS.consultarSismos(fechaIni, fechaFin);
     }
     
@@ -224,8 +228,8 @@ public class Controlador {
         return adminS.consultarSismos(mes, annio);
     }
     
-    public int consultarSismosMagnitud(double magnitud1, double magnitud2){
-        return adminS.consultarSismos(magnitud1, magnitud2);
+    public ArrayList<Sismo> consultarSismosMagnitud( int index){
+        return adminS.consultarSismos(index);
     }
     
     public boolean comprobarAnnio(int annio){
