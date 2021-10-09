@@ -5,11 +5,14 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.NProvincia;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -26,15 +29,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
      */
     public PanelPorMesAnnio() {
         initComponents();
-        JFreeChart barChart = ChartFactory.createBarChart(
-         "Gráfico de barras",           
-         "Category",            
-         "Score",            
-         createDataset(),          
-         PlotOrientation.VERTICAL,           
-         true, true, false);
-        ChartPanel chartPanel = new ChartPanel( barChart );
-        cargarPanelCharts(chartPanel);
+        this.annio = 0;
     }
     private void cargarPanelCharts(JPanel panel) {
         contentPanelCharts.removeAll();
@@ -43,6 +38,9 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
         contentPanelCharts.revalidate();
     }
 
+    private void obtenerDatos(){
+        annio = annioChooser.getYear();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +52,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
 
         lbMenuCharts = new javax.swing.JLabel();
         contentPanelCharts = new javax.swing.JPanel();
-        jYearChooser = new com.toedter.calendar.JYearChooser();
+        annioChooser = new com.toedter.calendar.JYearChooser();
         lbFechaSismo = new javax.swing.JLabel();
         panelConsultarSismosAnnio = new javax.swing.JPanel();
         btnConsultar = new javax.swing.JLabel();
@@ -78,14 +76,15 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
                 lbMenuChartsMouseExited(evt);
             }
         });
-        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+        add(lbMenuCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
+        contentPanelCharts.setBackground(new java.awt.Color(255, 255, 255));
         contentPanelCharts.setLayout(new java.awt.CardLayout());
         add(contentPanelCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 1070, 590));
 
-        jYearChooser.setBackground(new java.awt.Color(255, 255, 255));
-        jYearChooser.setForeground(new java.awt.Color(255, 255, 255));
-        add(jYearChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 40));
+        annioChooser.setBackground(new java.awt.Color(153, 153, 153));
+        annioChooser.setForeground(new java.awt.Color(0, 0, 0));
+        add(annioChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 100, 40));
 
         lbFechaSismo.setBackground(new java.awt.Color(0, 0, 0));
         lbFechaSismo.setFont(new java.awt.Font("Roboto Slab Light", 1, 14)); // NOI18N
@@ -127,7 +126,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(panelConsultarSismosAnnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 110, 230, -1));
+        add(panelConsultarSismosAnnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 230, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbMenuChartsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMenuChartsMouseClicked
@@ -144,7 +143,26 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
 
     private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
         // TODO add your handling code here:
-        
+        obtenerDatos();
+        if(VentanaPrincipal.controlador.comprobarAnnio(this.annio)){
+            JFreeChart barChart = ChartFactory.createBarChart(
+            "Gráfico de barras",           
+            "Meses",            
+            "Cantidad",            
+            createDataset(),          
+            PlotOrientation.VERTICAL,           
+            true, true, false);
+            CategoryPlot plot = (CategoryPlot) barChart.getPlot();
+            NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+            rangeAxis.setRange(0, 50);
+            ChartPanel chartPanel = new ChartPanel( barChart );
+            cargarPanelCharts(chartPanel);
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encuentran sismos registrados en este año", "Error", JOptionPane.ERROR_MESSAGE);
+            PanelSeleccioneOtroAnnio panelSugerencia = new PanelSeleccioneOtroAnnio();
+            cargarPanelCharts(panelSugerencia);
+            //Agregar de alguna forma lo del mensaje "Intenta con otro año" y algún ícono. Además arreglar el diseño que todo está horrible
+        }
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void btnConsultarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseEntered
@@ -168,30 +186,30 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
       final String octubre = "Octubre";
       final String noviembre = "Noviembre";
       final String diciembre = "Diciembre";
-      final String annio = "working on it";
+      final String annioChart = String.valueOf(this.annio);
       
       final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
 
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.SAN_JOSE),enero, annio);
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.CARTAGO) , febrero , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.HEREDIA) , marzo , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.ALAJUELA) , abril , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.PUNTARENAS) , mayo , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.GUANACASTE) , junio , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.LIMON) , julio , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.SAN_JOSE),agosto, annio);
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.CARTAGO) , setiembre , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.HEREDIA) , octubre , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.ALAJUELA) , noviembre , annio );
-      dataset.addValue( VentanaPrincipal.controlador.consultarSismosProvincia(NProvincia.PUNTARENAS) , diciembre , annio );
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(0,this.annio),enero, annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(1,this.annio) , febrero , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(2,this.annio) , marzo , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(3,this.annio) , abril , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(4,this.annio) , mayo , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(5,this.annio) , junio , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(6,this.annio) , julio , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(7,this.annio),agosto, annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(8,this.annio) , setiembre , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(9,this.annio) , octubre , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(10,this.annio) , noviembre , annioChart);
+      dataset.addValue( VentanaPrincipal.controlador.consultarSismosMes(11,this.annio) , diciembre , annioChart);
       
       return dataset; 
    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JYearChooser annioChooser;
     private javax.swing.JLabel btnConsultar;
     private javax.swing.JPanel contentPanelCharts;
-    private com.toedter.calendar.JYearChooser jYearChooser;
     private javax.swing.JLabel lbFechaSismo;
     private javax.swing.JLabel lbMenuCharts;
     private javax.swing.JPanel panelConsultarSismosAnnio;

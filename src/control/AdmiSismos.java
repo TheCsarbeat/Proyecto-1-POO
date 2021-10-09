@@ -149,6 +149,15 @@ public class AdmiSismos {
         return cant;
     }
     
+    public boolean comprobar(int annio){
+        for (Sismo sismo : allSismos){
+            if(sismo.getFecha().get(Calendar.YEAR)==annio){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     @Override
     public String toString() {
         return "AdmiSismos{" + "allSismos=" + allSismos + '}';
