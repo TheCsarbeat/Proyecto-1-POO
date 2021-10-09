@@ -37,6 +37,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         contentPanel.add(panel);
         contentPanel.repaint();
         contentPanel.revalidate();
+        if(panel.getClass() != PanelSismos.class){
+            ImageIcon imageIcon = new ImageIcon(System.getProperty("user.dir") + "/src/images/flecha-derecha.png");
+            btnConsultas.setIcon(imageIcon);
+            Thread th = new Thread(){
+                @Override
+                public void run(){
+                    try {
+                        for (int i = 320; i >= 0; i--){
+                            Thread.sleep(1);
+                            panelConsulta.setSize(200, i);
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            };th.start();
+        }
     }
 
     /**
