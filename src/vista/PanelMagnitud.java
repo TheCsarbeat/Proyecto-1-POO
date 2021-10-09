@@ -162,7 +162,7 @@ public class PanelMagnitud extends javax.swing.JPanel {
         
         ArrayList<Sismo> sismos = VentanaPrincipal.controlador.consultarSismosMagnitud(index);
         if (sismos.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No se han encontrado dato", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se han encontrado datos", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
         }
         cargarTabla(sismos);
         

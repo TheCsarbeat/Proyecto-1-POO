@@ -158,7 +158,7 @@ public class PanelPorMesAnnio extends javax.swing.JPanel {
             ChartPanel chartPanel = new ChartPanel( barChart );
             cargarPanelCharts(chartPanel);
         }else{
-            JOptionPane.showMessageDialog(null, "No se encuentran sismos registrados en este año", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se encuentran sismo en este año", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
             PanelSeleccioneOtroAnnio panelSugerencia = new PanelSeleccioneOtroAnnio();
             cargarPanelCharts(panelSugerencia);
             //Agregar de alguna forma lo del mensaje "Intenta con otro año" y algún ícono. Además arreglar el diseño que todo está horrible

@@ -94,10 +94,18 @@ public class AdmiSismos {
         return false;
     }
 
+    /**
+     * Retorna el contador de sismos, el cual almacena la cantidad total de sismos registrados
+     * @return 
+     */
     public int getContadorSismos() {
         return contadorSismos;
     }
-    
+    /**
+     * Retorna la cantidad de sismos registrados en un provincia especifica
+     * @param provincia es la provincia en la que se desea contar los sismos
+     * @return 
+     */
     public int consultarSismos(NProvincia provincia){
         int cant = 0;
         for (Sismo sismo : allSismos){
@@ -107,7 +115,11 @@ public class AdmiSismos {
         }
         return cant;
     }
-    
+    /**
+     * Retorna la cantidad de sismos con un tipo de origen especifico
+     * @param origen es el origen de los sismos que se quiere contar
+     * @return 
+     */
     public int consultarSismos(TOrigen origen){
         int cant = 0;
         for (Sismo sismo : allSismos){
